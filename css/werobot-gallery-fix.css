@@ -1,0 +1,55 @@
+/* WeRobot Gallery Fix CSS */
+/* This CSS ensures the WeRobot gallery has consistent styling with other galleries */
+
+#weRobotGallery {
+    display: grid !important;
+    grid-template-columns: repeat(5, 1fr) !important;
+    gap: 0 !important;
+    width: 62.5% !important;
+    margin-left: 0 !important;
+    margin-right: auto !important;
+    padding: 0 !important;
+}
+
+#weRobotGallery .gallery-item {
+    margin: 0 !important;
+    padding: 0 !important;
+    border: none !important;
+    overflow: hidden !important;
+    position: relative !important;
+    transform: none !important;
+    scale: 1 !important;
+    transition: none !important;
+}
+
+#weRobotGallery .gallery-item img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: none !important;
+    transform: none !important;
+    scale: 1 !important;
+}
+
+/* Force the gallery items to be edge-to-edge */
+#weRobotGallery .gallery-item:before,
+#weRobotGallery .gallery-item:after {
+    content: none !important;
+}
+
+/* Override any hover effects that might cause spacing */
+#weRobotGallery .gallery-item:hover {
+    transform: none !important;
+    scale: 1 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: none !important;
+}
+
+/* Ensure image numbers don't affect layout */
+#weRobotGallery .image-number {
+    position: absolute !important;
+    z-index: 10 !important;
+}

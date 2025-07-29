@@ -1,0 +1,75 @@
+/* Consolidated styles from duplicated sections in index.html */
+
+/* USC Architecture Folder Styles */
+.usc-folders {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.usc-folder {
+    background-color: var(--dark-gray);
+    color: var(--text-color);
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-size: 0.9em;
+    font-weight: 500;
+}
+
+.usc-folder:hover, .usc-folder.active {
+    background-color: var(--highlight-color);
+}
+
+.usc-folder-content {
+    display: none;
+    margin-top: 20px;
+}
+
+.usc-folder-content.active {
+    display: block;
+}
+
+/* Scroll Sentinel */
+.scroll-sentinel {
+    grid-column: 1 / -1;
+    height: 10px;
+    width: 100%;
+    visibility: hidden;
+}
+
+/* Password input styling */
+.password-container {
+    display: none;
+    margin: 10px auto;
+    max-width: 300px;
+    text-align: center;
+}
+
+.password-input {
+    padding: 8px 12px;
+    border: 1px solid var(--dark-gray);
+    border-radius: 4px;
+    background-color: var(--dark-gray);
+    color: var(--text-color);
+    margin-right: 10px;
+}
+
+.password-submit {
+    padding: 8px 12px;
+    background-color: var(--highlight-color);
+    color: var(--text-color);
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.password-error {
+    color: #ff5555;
+    margin-top: 5px;
+    font-size: 0.9em;
+    display: none;
+}

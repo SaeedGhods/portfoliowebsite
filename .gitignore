@@ -1,0 +1,26 @@
+# Large files and assets (served from S3)
+assets/
+temp/
+temp_compressed/
+unused_files/
+*.pdf
+*.zip
+*.tar.gz
+
+# Development files
+node_modules/
+.DS_Store
+*.log
+.env
+.env.local
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS files
+Thumbs.db
+.Spotlight-V100
+.Trashes

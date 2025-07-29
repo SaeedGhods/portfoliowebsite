@@ -1,0 +1,39 @@
+/* Timestamp Styles */
+.timestamp-visible {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: rgba(0, 0, 0, 0.85);
+    color: white;
+    padding: 10px 15px;
+    border-radius: 4px;
+    font-size: 14px;
+    z-index: 9999;
+    font-family: 'Roboto', Arial, sans-serif;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
+    opacity: 0.95;
+    transition: all 0.3s ease;
+    border-left: 3px solid #3498db;
+    letter-spacing: 0.5px;
+    max-width: 300px;
+    text-align: center;
+    pointer-events: none; /* Prevents interfering with clicks */
+}
+
+/* Make timestamp more visible on hover */
+.timestamp-visible:hover {
+    opacity: 1;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+}
+
+/* Media query for mobile devices */
+@media screen and (max-width: 768px) {
+    .timestamp-visible {
+        bottom: 10px;
+        right: 10px;
+        font-size: 12px;
+        padding: 8px 12px;
+        max-width: 250px;
+    }
+}

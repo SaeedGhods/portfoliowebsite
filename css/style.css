@@ -1,0 +1,585 @@
+/* Base Variables */
+:root {
+    --black: #000;
+    --dark-gray: #333;
+    --white: #ffffff;
+    --background-color: #0d0d0d;
+    --text-color: #f0f0f0;
+    --highlight-color: #0074d9;
+    --focus-color: #0099ff;
+    --animation-speed: 1s;
+    --ease-out-quint: cubic-bezier(0.23, 1, 0.32, 1);
+    --smooth-ease: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Global Styles */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--background-color);
+    color: var(--text-color);
+    font-family: 'Gotham', sans-serif;
+    line-height: 1.6;
+    font-size: 16px;
+    margin: 0;
+    padding: 0;
+    transition: background-color 0.5s var(--smooth-ease);
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --background-color: #1a1a1a;
+        --text-color: #e6e6e6;
+        --highlight-color: #0096ff;
+    }
+}
+
+/* Sticky header and progress bar */
+header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: var(--background-color);
+    padding: 10px 15px;
+}
+
+#progress-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 5px;
+    background: var(--highlight-color);
+    z-index: 1100;
+    transition: width 0.25s ease-out;
+}
+
+/* Container and layout */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 15px;
+}
+
+/* Intro Section */
+.intro {
+    text-align: center;
+    padding: 30px 0 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.profile {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--highlight-color);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    will-change: transform, box-shadow;
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
+.profile:hover {
+    box-shadow: 0 0 15px rgba(0, 116, 217, 0.5);
+    transform: scale(1.03);
+}
+
+.intro-text, .contact-info, .theme-switcher {
+    opacity: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: opacity 1.2s var(--smooth-ease), max-height 1.7s var(--smooth-ease);
+}
+
+.visible {
+    opacity: 1;
+    max-height: 1000px;
+}
+
+/* Timeline Grid Layout */
+.timeline {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 20px;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    max-height: 0;
+    overflow: hidden;
+    will-change: opacity, max-height;
+}
+
+.timeline.active {
+    opacity: 1;
+    max-height: none;
+}
+
+.timeline-item {
+    position: relative;
+    padding: 15px 0 15px 30px;
+    border-left: none;
+    transition: all 0.3s var(--smooth-ease);
+    background: rgba(0, 116, 217, 0.1);
+    border-radius: 4px;
+    margin-bottom: 10px;
+}
+
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    background-color: var(--highlight-color);
+    opacity: 0.15;
+    transition: opacity 0.3s var(--smooth-ease), width 0.3s var(--smooth-ease);
+}
+
+.timeline:hover .timeline-item::before {
+    opacity: 0.15;
+}
+
+.timeline-item:hover::before {
+    opacity: 1 !important;
+    width: 6px;
+}
+
+.timeline-item.expanded::before {
+    opacity: 0.15;
+}
+
+.timeline-item:hover {
+    transform: translateY(-5px);
+}
+
+.timeline-item h4 {
+    font-size: clamp(1rem, 3vw, 1.25rem);
+    color: var(--white);
+    margin-bottom: 3px;
+    font-weight: 500;
+}
+
+.timeline-year, .timeline-age {
+    font-size: 0.875rem;
+    color: var(--dark-gray);
+    display: block;
+    transition: font-size 0.3s var(--smooth-ease), color 0.6s var(--smooth-ease);
+}
+
+.timeline-item p {
+    font-size: 0.9rem;
+    opacity: 0.8;
+    transition: opacity 0.6s var(--smooth-ease), color 0.6s var(--smooth-ease);
+}
+
+.timeline-item:hover p {
+    opacity: 1;
+    color: var(--white);
+}
+
+.expandable {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.6s ease;
+    will-change: max-height;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.timeline-item:hover .expandable {
+    max-height: 600px;
+}
+
+.experience-list {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.experience-list li {
+    cursor: pointer;
+    margin-bottom: 10px;
+    transition: color 0.3s ease;
+}
+
+.experience-list li:hover {
+    color: var(--focus-color);
+}
+
+.content-display {
+    margin-top: 20px;
+    padding: 10px;
+    border: 1px solid var(--highlight-color);
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.content-display img, .content-display embed, .content-display iframe {
+    max-width: 100%;
+    height: auto;
+}
+
+.theme-switcher {
+    text-align: right;
+    margin-bottom: 20px;
+    cursor: pointer;
+}
+
+button {
+    background: var(--highlight-color);
+    color: var(--white);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+button:hover {
+    background: var(--focus-color);
+}
+
+/* PDF Container - 8.5x11 Aspect Ratio */
+.pdf-container {
+    width: 100%;
+    height: 1400px; /* Taller fixed height */
+    margin: 0 auto 20px auto;
+}
+
+.pdf-container iframe {
+    width: 100%;
+    height: 100%;
+    border: 1px solid #ddd;
+}
+
+@media screen and (max-width: 768px) {
+    .timeline {
+        grid-template-columns: 1fr;
+        padding: 10px;
+    }
+}
+
+/* Utility classes for controlling timeline item spacing */
+.no-bottom-space {
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+    border-bottom: none !important;
+}
+
+.no-top-space {
+    margin-top: 0 !important;
+    padding-top: 10px !important;
+    border-top: none !important;
+}
+
+.no-bottom-space .expandable,
+.no-bottom-space.timeline-item .expandable {
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+}
+
+/* Make sure not to add extra space when hovering over these items */
+.no-bottom-space:hover {
+    margin-bottom: 0 !important;
+}
+
+.no-top-space:hover {
+    margin-top: 0 !important;
+}
+
+/* More aggressive fix for spacing between VENT project and Mortgage timeline items */
+.timeline-item:has(#ventGallery) {
+    margin-bottom: 0;
+    padding-bottom: 5px;
+    border-bottom: none;
+}
+
+.timeline-item:has(#ventGallery) + .timeline-item {
+    margin-top: 0;
+    padding-top: 10px;
+    border-top: none;
+}
+
+/* Ensure spacing fixes work on all screen sizes */
+@media (max-width: 768px) {
+    .timeline-item:has(#ventGallery) {
+        margin-bottom: 0;
+        padding-bottom: 0;
+    }
+    
+    .timeline-item:has(#ventGallery) + .timeline-item {
+        margin-top: 0;
+        padding-top: 10px;
+    }
+    
+    .no-bottom-space {
+        margin-bottom: 0 !important;
+        padding-bottom: 0 !important;
+    }
+    
+    .no-top-space {
+        margin-top: 0 !important;
+        padding-top: 10px !important;
+    }
+}
+
+/* Gallery Styling */
+.gallery-grid,
+.gallery-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin: 20px 0;
+    width: 100%;
+}
+
+.gallery-grid-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.gallery-item {
+    position: relative;
+    width: calc(14.285% - 10px); /* 7-column grid for hydroponic gallery */
+    max-width: 300px;
+    margin-bottom: 10px;
+    transition: all 0.3s ease;
+    overflow: hidden;
+}
+
+.gallery-item img,
+.project-gallery-image {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    filter: saturate(0.22);
+    transition: filter 0.3s ease;
+    border-radius: 0; /* No border radius on images as specified in memory */
+}
+
+.gallery-item:hover img,
+.gallery-item:hover .project-gallery-image {
+    filter: saturate(1);
+}
+
+.image-number {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: white;
+    font-size: 12px;
+    padding: 2px 6px;
+    border-radius: 3px;
+    opacity: 0.8;
+    transition: opacity 0.3s ease;
+}
+
+.gallery-item:hover .image-number {
+    opacity: 0;
+}
+
+.gallery-info {
+    width: 100%;
+    text-align: center;
+    font-size: 0.9em;
+    margin-bottom: 15px;
+    color: var(--text-color);
+}
+
+/* PDF thumbnail styles */
+.pdf-thumbnail {
+    width: 100%;
+    height: 200px;
+    background-color: #f5f5f5;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 15px;
+    box-sizing: border-box;
+    filter: saturate(0.22);
+    transition: all 0.3s ease;
+}
+
+.gallery-item:hover .pdf-thumbnail {
+    filter: saturate(1);
+    background-color: #e0e0e0;
+}
+
+.pdf-icon {
+    font-size: 36px;
+    font-weight: bold;
+    color: #d32f2f;
+    margin-bottom: 10px;
+}
+
+.pdf-title {
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 1.2;
+    color: #333;
+}
+
+/* Responsive gallery adjustments */
+@media (max-width: 1200px) {
+    .gallery-item {
+        width: calc(20% - 10px) !important; /* Maintain 5 columns on medium screens */
+    }
+}
+
+@media (max-width: 992px) {
+    .gallery-item {
+        width: calc(20% - 10px) !important; /* Maintain 5 columns on smaller screens */
+    }
+}
+
+@media (max-width: 768px) {
+    .gallery-item {
+        width: calc(20% - 10px) !important; /* Maintain 5 columns on tablets */
+    }
+    
+    /* Improve mobile experience */
+    .profile-container {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .profile-image {
+        margin-bottom: 20px;
+    }
+    
+    .profile-info {
+        text-align: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .gallery-item {
+        width: calc(20% - 10px) !important; /* Maintain 5 columns on mobile */
+    }
+    
+    /* Improve mobile experience */
+    body {
+        font-size: 14px;
+    }
+    
+    h1 {
+        font-size: 1.8em;
+    }
+    
+    h2 {
+        font-size: 1.5em;
+    }
+    
+    .container {
+        padding: 10px;
+    }
+}
+
+@media (max-width: 320px) {
+    .gallery-item {
+        width: calc(20% - 10px) !important; /* Maintain 5 columns on very small screens */
+    }
+}
+
+/* Additional Mobile Optimizations */
+@media (max-width: 768px) {
+    /* Timeline optimizations */
+    .timeline-container {
+        width: 95%;
+        margin: 0 auto;
+    }
+    
+    .timeline-item {
+        padding-left: 20px; /* Less padding on mobile */
+    }
+    
+    .timeline-item h3 {
+        font-size: 16px; /* Smaller headers on mobile */
+    }
+    
+    .timeline-item p {
+        font-size: 14px; /* Smaller text on mobile */
+    }
+    
+    .blue-bar {
+        left: 5px; /* Position closer to edge on mobile */
+        width: 5px; /* Thinner bar on mobile */
+    }
+    
+    /* Ensure the timeline doesn't overflow on mobile */
+    .timeline-content {
+        max-width: 100%;
+        overflow-x: hidden;
+    }
+    
+    /* Improve touch targets */
+    .timeline-header {
+        padding: 12px 8px; /* Larger touch target */
+    }
+    
+    /* Fix potential text overflow issues */
+    h1, h2, h3, h4, h5, h6, p {
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+    }
+    
+    /* Fix iOS-specific glitches */
+    * {
+        -webkit-tap-highlight-color: transparent;
+    }
+    
+    input, textarea, button {
+        -webkit-appearance: none;
+        appearance: none;
+        border-radius: 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .profile {
+        width: 120px;
+        height: 120px;
+    }
+    
+    /* Ensure galleries maintain 5-column layout on small screens */
+    .gallery-container {
+        grid-template-columns: repeat(5, 1fr) !important;
+        width: 95% !important;
+        gap: 2px !important;
+    }
+    
+    /* Fix potential overflow issues */
+    body {
+        overflow-x: hidden;
+        width: 100%;
+        position: relative;
+    }
+    
+    /* Fix iOS Safari 100vh issue */
+    .full-height {
+        height: 100%;
+        height: -webkit-fill-available;
+    }
+    
+    /* Improve touch interactions */
+    a, button, .timeline-header, .gallery-item {
+        min-height: 44px; /* Apple's recommended minimum touch target size */
+    }
+}

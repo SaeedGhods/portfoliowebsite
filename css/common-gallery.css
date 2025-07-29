@@ -1,0 +1,385 @@
+/* Common Gallery Styles for All Project Galleries */
+
+/* Gallery Container */
+.gallery-container {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr) !important;
+    gap: 0 !important;
+    margin: 20px 0;
+    width: 62.5%;
+    margin-left: 0;
+    margin-right: auto;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+/* Gallery Item */
+.gallery-item {
+    position: relative;
+    width: 100%;
+    padding-bottom: 100%;
+    overflow: hidden;
+    margin: 0 !important;
+    border: none !important;
+    cursor: pointer;
+}
+
+/* Gallery Images */
+.gallery-item img,
+.gallery-item-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: saturate(0.22);
+    transition: filter 0.3s ease;
+    border: none !important;
+    transform: none !important;
+}
+
+.gallery-item:hover img,
+.gallery-item:hover .gallery-item-img {
+    filter: saturate(1);
+}
+
+/* Image Numbers Styling - Consistent across all galleries */
+.image-number,
+.gallery-item-number {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-size: 10px;
+    z-index: 2;
+    transition: opacity 0.3s ease;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
+}
+
+.gallery-item:hover .image-number {
+    opacity: 0;
+}
+
+/* Loading Indicator */
+.gallery-loading {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+    opacity: 1;
+    transition: opacity 0.5s ease;
+}
+
+.gallery-loading.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.gallery-spinner {
+    width: 40px;
+    height: 40px;
+    border: 4px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    border-top-color: var(--highlight-color, #fff);
+    animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* Image Modal for Full-Size Viewing */
+.gallery-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    z-index: 1000;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.gallery-modal.active {
+    display: flex;
+    opacity: 1;
+}
+
+.gallery-modal-content {
+    position: relative;
+    max-width: 90%;
+    max-height: 90%;
+    overflow: hidden;
+}
+
+.gallery-modal-img {
+    max-width: 100%;
+    max-height: 90vh;
+    object-fit: contain;
+}
+
+.gallery-modal-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    color: white;
+    font-size: 30px;
+    cursor: pointer;
+    z-index: 1001;
+}
+
+.gallery-modal-nav {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 20px;
+    transform: translateY(-50%);
+    z-index: 1001;
+    background-color: transparent;
+}
+
+.gallery-modal-prev,
+.gallery-modal-next {
+    background-color: rgba(0, 0, 0, 0.3);
+    color: white;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    font-size: 20px;
+    transition: background-color 0.3s ease;
+}
+
+.gallery-modal-prev:hover,
+.gallery-modal-next:hover {
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+/* Slideshow styles for gallery items */
+.slideshow-container {
+    position: relative;
+    overflow: hidden;
+    padding-bottom: 100%;
+}
+
+.slideshow-slide {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.slideshow-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.slideshow-indicator {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 2px 5px;
+    border-radius: 3px;
+    font-size: 10px;
+    z-index: 2;
+}
+
+.slideshow-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 2;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.slideshow-nav.prev {
+    left: 5px;
+}
+
+.slideshow-nav.next {
+    right: 5px;
+}
+
+.slideshow-container:hover .slideshow-nav {
+    opacity: 1;
+}
+
+/* Ensure the slideshow follows the 5-column grid layout requirement */
+#cybermaskGallery {
+    display: grid !important;
+    grid-template-columns: repeat(5, 1fr) !important;
+    width: 62.5% !important;
+    gap: 0 !important;
+}
+
+/* WeRobot Gallery Styles */
+#weRobotGallery {
+    display: grid !important;
+    grid-template-columns: repeat(5, 1fr) !important;
+    gap: 0 !important;
+    width: 62.5% !important;
+    margin-left: 0 !important;
+    margin-right: auto !important;
+    padding: 0;
+    margin-top: 20px;
+    background: transparent;
+}
+
+#weRobotGallery .gallery-item {
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: 1;
+    transform: none !important;
+    scale: 1 !important;
+    transition: none !important;
+}
+
+#weRobotGallery .gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: saturate(0.22);
+    transition: filter 0.3s ease;
+    transform: none !important;
+    scale: 1 !important;
+}
+
+#weRobotGallery .gallery-item:hover img {
+    filter: saturate(1);
+    transform: none !important;
+    scale: 1 !important;
+}
+
+#weRobotGallery .image-number {
+    position: absolute;
+    bottom: 5px;
+    right: 10px;
+    color: white;
+    font-size: 12px;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+    z-index: 10;
+    transition: opacity 0.3s ease;
+}
+
+#weRobotGallery .gallery-item:hover .image-number {
+    opacity: 0;
+}
+
+/* Media Queries for Responsive Design */
+@media (max-width: 1200px) {
+    /* Maintain 5-column grid layout as per user's strict requirements */
+    .gallery-container {
+        grid-template-columns: repeat(5, 1fr) !important;
+        width: 62.5% !important;
+    }
+    
+    /* Improve mobile experience while maintaining 5 columns */
+    .gallery-item img {
+        object-fit: cover;
+    }
+}
+
+@media (max-width: 768px) {
+    /* Maintain 5-column grid layout as per user's strict requirements */
+    .gallery-container {
+        grid-template-columns: repeat(5, 1fr) !important;
+        width: 85% !important; /* Slightly wider on tablets for better visibility */
+        gap: 5px !important; /* Smaller gap on mobile */
+    }
+    
+    /* Improve touch targets */
+    .gallery-item {
+        min-height: 50px;
+    }
+    
+    /* Consistent image numbers on mobile */
+    .image-number,
+    .gallery-item-number {
+        font-size: 8px !important;
+        padding: 1px 3px !important;
+        top: 3px !important;
+        left: 3px !important;
+    }
+    
+    /* Modal improvements for mobile */
+    .gallery-modal-content {
+        max-width: 95%;
+    }
+    
+    .gallery-modal-nav {
+        padding: 0 10px;
+    }
+    
+    .gallery-modal-prev,
+    .gallery-modal-next {
+        width: 40px; /* Larger touch targets */
+        height: 40px;
+        font-size: 16px;
+        opacity: 0.8; /* More visible on mobile */
+    }
+    
+    .gallery-modal-close {
+        top: 10px;
+        right: 10px;
+        width: 40px; /* Larger touch target */
+        height: 40px;
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    /* Maintain 5-column grid layout as per user's strict requirements */
+    .gallery-container {
+        grid-template-columns: repeat(5, 1fr) !important;
+        width: 95% !important; /* Almost full width on phones */
+        gap: 3px !important; /* Even smaller gap on phones */
+    }
+    
+    /* Optimize for small screens */
+    .image-number,
+    .gallery-item-number {
+        font-size: 7px !important;
+        padding: 1px 2px !important;
+        top: 2px !important;
+        left: 2px !important;
+    }
+    
+    /* Improve modal for small screens */
+    .gallery-modal-img,
+    .gallery-modal-image {
+        max-height: 80vh;
+    }
+}

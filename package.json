@@ -1,0 +1,23 @@
+{
+  "name": "saeed-ghods-portfolio",
+  "version": "1.0.0",
+  "description": "Saeed Ghods - Architectural Designer Innovator and Investor Portfolio",
+  "main": "index.html",
+  "scripts": {
+    "start": "python3 -m http.server 8000",
+    "dev": "python3 -m http.server 8000"
+  },
+  "keywords": [
+    "portfolio",
+    "architecture",
+    "design",
+    "technology",
+    "tesla",
+    "innovation"
+  ],
+  "author": "Saeed Ghods",
+  "license": "MIT",
+  "engines": {
+    "node": ">=14.0.0"
+  }
+} 

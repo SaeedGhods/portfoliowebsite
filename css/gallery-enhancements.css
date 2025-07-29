@@ -1,0 +1,93 @@
+/* Gallery Enhancements CSS */
+
+/* Modal Loading Indicator */
+.gallery-modal-loading {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 2;
+}
+
+.gallery-modal-loading .gallery-spinner {
+    width: 50px;
+    height: 50px;
+    border: 5px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    border-top-color: #fff;
+    animation: spin 1s ease-in-out infinite;
+}
+
+/* Modal Error Message */
+.gallery-modal-error {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: #fff;
+    font-size: 18px;
+    text-align: center;
+    z-index: 2;
+}
+
+/* Image Counter */
+.gallery-modal-counter {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(0, 0, 0, 0.7);
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 15px;
+    font-size: 14px;
+    z-index: 3;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .gallery-container {
+        grid-template-columns: repeat(3, 1fr);
+        width: 100%;
+    }
+    
+    .gallery-modal-content {
+        width: 95%;
+        height: 80%;
+    }
+    
+    .gallery-modal-prev,
+    .gallery-modal-next {
+        font-size: 24px;
+        padding: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .gallery-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .gallery-modal-prev,
+    .gallery-modal-next {
+        font-size: 20px;
+        padding: 10px;
+    }
+}
+
+/* Touch Feedback */
+.gallery-modal-prev:active,
+.gallery-modal-next:active,
+.gallery-modal-close:active {
+    transform: scale(0.95);
+}

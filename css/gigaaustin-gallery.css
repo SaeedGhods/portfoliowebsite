@@ -1,0 +1,140 @@
+/**
+ * Giga Austin Gallery Styles
+ * Following Tesla North Hollywood gallery requirements
+ */
+
+/* Container Styles */
+#gigaAustinGallery {
+    display: grid !important;
+    grid-template-columns: repeat(5, 1fr) !important;
+    gap: 0 !important;
+    width: 62.5% !important;
+    margin-left: 0 !important;
+    margin-right: auto !important;
+    padding: 0;
+    margin-top: 20px;
+    background: transparent;
+}
+
+/* Gallery Item Styles */
+#gigaAustinGallery .gallery-item {
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: 1;
+    transform: none !important;
+    scale: 1 !important;
+    transition: none !important;
+}
+
+/* Image Styles */
+#gigaAustinGallery .gallery-item img,
+#gigaAustinGallery .project-gallery-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: saturate(0.22);
+    transition: filter 0.3s ease;
+    transform: none !important;
+    scale: 1 !important;
+}
+
+/* Hover Effects - Only change saturation */
+#gigaAustinGallery .gallery-item:hover img,
+#gigaAustinGallery .gallery-item:hover .project-gallery-image {
+    filter: saturate(1);
+    transform: none !important;
+    scale: 1 !important;
+}
+
+/* Image Number Styles */
+#gigaAustinGallery .image-number {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    padding: 2px 8px;
+    border-radius: 3px;
+    font-size: 12px;
+    opacity: 1;
+    transition: opacity 0.3s ease;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+/* Hide image number on hover */
+#gigaAustinGallery .gallery-item:hover .image-number {
+    opacity: 0;
+}
+
+/* Loading Indicator Styles */
+#gigaAustinGallery .gallery-loading {
+    grid-column: 1 / -1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+}
+
+#gigaAustinGallery .gallery-spinner {
+    width: 40px;
+    height: 40px;
+    border: 4px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    border-top-color: white;
+    animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* Responsive Styles - Maintain 5 columns as required */
+@media (max-width: 1200px) {
+    #gigaAustinGallery {
+        grid-template-columns: repeat(5, 1fr) !important;
+        width: 80% !important;
+    }
+}
+
+@media (max-width: 768px) {
+    #gigaAustinGallery {
+        grid-template-columns: repeat(5, 1fr) !important;
+        width: 95% !important;
+    }
+}
+
+/* Modal Styles (Fallback if common-gallery.js modal is not available) */
+.gallery-modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    justify-content: center;
+    align-items: center;
+}
+
+.gallery-modal-content {
+    position: relative;
+    max-width: 90%;
+    max-height: 90%;
+}
+
+.gallery-modal-close {
+    position: absolute;
+    top: -30px;
+    right: 0;
+    color: white;
+    font-size: 30px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.gallery-modal-img {
+    max-width: 100%;
+    max-height: 90vh;
+    object-fit: contain;
+}
