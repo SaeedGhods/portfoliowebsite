@@ -4411,7 +4411,7 @@
                 
                 // Case-insensitive password check with trimming
                 console.log('Checking password:', password.trim());
-                if (password && (password.trim() === "tsla**" || password.trim() === "tsla*")) {
+               if (password && (password.trim() === "tsla**" || password.trim() === "tsla*" || password.trim() === "tsla")) {
                     console.log('Password is correct!');
                     // Password correct, semi-expand timeline (without expanding items)
                     profile.classList.add('active', 'pulse-stopped');
