@@ -4471,6 +4471,27 @@
                 }
             });
 
+            // Check for bypass parameter to auto-enter portfolio
+            const urlParams = new URLSearchParams(window.location.search);
+            if (urlParams.get('bypass') === 'true') {
+                // Automatically show the portfolio without password
+                const profile = document.getElementById('profile');
+                const timeline = document.querySelector('.timeline');
+                const introText = document.getElementById('introText');
+                const contactLinks = document.querySelector('.contact-links');
+                const passwordContainer = document.getElementById('passwordContainer');
+
+                // Show portfolio content
+                profile.classList.add('active', 'pulse-stopped');
+                timeline.classList.add('active');
+                introText.classList.add('visible');
+                contactLinks.classList.add('timeline-active');
+                passwordContainer.classList.remove('visible');
+
+                // Update click state to expanded
+                clickState = States.EXPANDED;
+            }
+
             // Smooth scrolling for anchor links
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 anchor.addEventListener('click', function (e) {
