@@ -4474,17 +4474,41 @@
             // Check for bypass parameter to auto-enter password
             const urlParams = new URLSearchParams(window.location.search);
             if (urlParams.get('bypass') === 'true') {
-                // First click the profile to show password input
-                toggleDisplay();
+                console.log('Bypass detected - auto-entering password');
 
-                // Then auto-fill and submit the password after a short delay
+                // Directly execute the password success logic without UI interaction
                 setTimeout(() => {
-                    const passwordInput = document.getElementById('timelinePassword');
-                    if (passwordInput) {
-                        passwordInput.value = 'tsla';
-                        checkPassword();
+                    const passwordContainer = document.getElementById('passwordContainer');
+                    const profile = document.getElementById('profile');
+                    const timeline = document.querySelector('.timeline');
+                    const timelineItems = document.querySelectorAll('.timeline-item');
+                    const introText = document.getElementById('introText');
+                    const contactLinks = document.querySelector('.contact-links');
+
+                    console.log('Auto-activating portfolio...');
+
+                    // Execute the same logic as successful password entry
+                    profile.classList.add('active', 'pulse-stopped');
+                    timeline.classList.add('active');
+                    introText.classList.add('visible');
+                    contactLinks.classList.add('timeline-active');
+                    passwordContainer.classList.remove('visible');
+
+                    // Play autopilot "on" chime for successful password entry
+                    const autopilotOnChime = document.getElementById('autopilot-on-chime');
+                    if (autopilotOnChime) {
+                        autopilotOnChime.currentTime = 0;
+                        autopilotOnChime.play().catch(e => console.log('Chime play failed:', e));
                     }
-                }, 100);
+
+                    // Make sure timeline items are NOT expanded yet
+                    timelineItems.forEach(item => item.classList.remove('expanded'));
+
+                    // Update click state to expanded
+                    clickState = States.EXPANDED;
+
+                    console.log('Portfolio auto-activated successfully');
+                }, 200);
             }
 
             // Smooth scrolling for anchor links
