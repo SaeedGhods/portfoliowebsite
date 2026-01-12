@@ -353,31 +353,6 @@ document.addEventListener("DOMContentLoaded", () => {
     GalleryFixes.applyHoverFix();
 
 
-    // Projects dropdown toggle function
-    toggleProjectsDropdown = () => {
-        const dropdown = DOM.getById('projectsDropdown');
-        if (dropdown) {
-            const isActive = dropdown.classList.contains('active');
-            // Close any other open dropdowns
-            document.querySelectorAll('.projects-dropdown-menu').forEach(menu => {
-                menu.classList.remove('active');
-            });
-            // Toggle this dropdown
-            if (!isActive) {
-                dropdown.classList.add('active');
-            }
-        }
-    };
-
-    // Close dropdown when clicking outside
-    document.addEventListener('click', (e) => {
-        const dropdown = DOM.getById('projectsDropdown');
-        const toggle = document.querySelector('.projects-dropdown-toggle');
-
-        if (dropdown && toggle && !dropdown.contains(e.target) && !toggle.contains(e.target)) {
-            dropdown.classList.remove('active');
-        }
-    });
 
 
     // Expose global functions
@@ -389,7 +364,6 @@ document.addEventListener("DOMContentLoaded", () => {
     window.prevPage = PDFViewer.prevPage;
     window.nextPage = PDFViewer.nextPage;
     window.closePdfViewer = PDFViewer.closePdfViewer;
-    window.toggleProjectsDropdown = toggleProjectsDropdown;
 });
 
 
