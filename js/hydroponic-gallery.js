@@ -3,24 +3,44 @@
  * Maintains strict 5-column grid layout as required
  */
 
-// Define the hydroponic gallery images with Safari compatibility
-function getHydroponicImages() {
-    const images = [];
-    for (let i = 1; i <= 35; i++) {
-        const paddedNum = i.toString().padStart(2, '0');
-        let imageUrl = getAssetUrl(`hydroponic/JPEG/${paddedNum}.jpg`);
-
-        // Add Safari-specific fallback logic
-        if (navigator.userAgent.includes('Safari') && !navigator.userAgent.includes('Chrome')) {
-            console.log(`Safari detected, using cache-busted URL for image ${paddedNum}: ${imageUrl}`);
-        }
-
-        images.push(imageUrl);
-    }
-    return images;
-}
-
-const hydroponicImages = getHydroponicImages();
+// Define the hydroponic gallery images
+const hydroponicImages = [
+    getAssetUrl("hydroponic/JPEG/01.jpg"),
+    getAssetUrl("hydroponic/JPEG/02.jpg"),
+    getAssetUrl("hydroponic/JPEG/03.jpg"),
+    getAssetUrl("hydroponic/JPEG/04.jpg"),
+    getAssetUrl("hydroponic/JPEG/05.jpg"),
+    getAssetUrl("hydroponic/JPEG/06.jpg"),
+    getAssetUrl("hydroponic/JPEG/07.jpg"),
+    getAssetUrl("hydroponic/JPEG/08.jpg"),
+    getAssetUrl("hydroponic/JPEG/09.jpg"),
+    getAssetUrl("hydroponic/JPEG/10.jpg"),
+    getAssetUrl("hydroponic/JPEG/11.jpg"),
+    getAssetUrl("hydroponic/JPEG/12.jpg"),
+    getAssetUrl("hydroponic/JPEG/13.jpg"),
+    getAssetUrl("hydroponic/JPEG/14.jpg"),
+    getAssetUrl("hydroponic/JPEG/15.jpg"),
+    getAssetUrl("hydroponic/JPEG/16.jpg"),
+    getAssetUrl("hydroponic/JPEG/17.jpg"),
+    getAssetUrl("hydroponic/JPEG/18.jpg"),
+    getAssetUrl("hydroponic/JPEG/19.jpg"),
+    getAssetUrl("hydroponic/JPEG/20.jpg"),
+    getAssetUrl("hydroponic/JPEG/21.jpg"),
+    getAssetUrl("hydroponic/JPEG/22.jpg"),
+    getAssetUrl("hydroponic/JPEG/23.jpg"),
+    getAssetUrl("hydroponic/JPEG/24.jpg"),
+    getAssetUrl("hydroponic/JPEG/25.jpg"),
+    getAssetUrl("hydroponic/JPEG/26.jpg"),
+    getAssetUrl("hydroponic/JPEG/27.jpg"),
+    getAssetUrl("hydroponic/JPEG/28.jpg"),
+    getAssetUrl("hydroponic/JPEG/29.jpg"),
+    getAssetUrl("hydroponic/JPEG/30.jpg"),
+    getAssetUrl("hydroponic/JPEG/31.jpg"),
+    getAssetUrl("hydroponic/JPEG/32.jpg"),
+    getAssetUrl("hydroponic/JPEG/33.jpg"),
+    getAssetUrl("hydroponic/JPEG/34.jpg"),
+    getAssetUrl("hydroponic/JPEG/35.jpg")
+];
 
 // Initialize when DOM is loaded
 document.addEventListener("DOMContentLoaded", function() {
@@ -34,17 +54,14 @@ function initHydroponicGallery() {
         console.warn("Hydroponic gallery container not found");
         return;
     }
-
+    
     // Skip if already initialized
     if (gallery.classList.contains("initialized")) {
         console.log("Hydroponic gallery already initialized, skipping");
         return;
     }
-
+    
     console.log("Initializing Hydroponic gallery with images from 01-35");
-    console.log(`Browser: ${navigator.userAgent}`);
-    console.log(`Is Safari: ${navigator.userAgent.includes('Safari') && !navigator.userAgent.includes('Chrome')}`);
-    console.log(`Sample image URL: ${hydroponicImages[0]}`);
     
     // Use the common gallery manager if available
     if (window.galleryManager) {
@@ -97,28 +114,10 @@ function createImageItem(container, imagePath, index) {
     img.alt = `Hydroponic System Image ${index}`;
     img.loading = "lazy";
     
-    // Add error handling with Safari-specific debugging
+    // Add error handling
     img.onerror = function() {
         console.error(`Failed to load image: ${imagePath}`);
-        console.error(`Browser: ${navigator.userAgent}`);
-        console.error(`Is Safari: ${navigator.userAgent.includes('Safari') && !navigator.userAgent.includes('Chrome')}`);
-
-        // Create a text-based placeholder instead of trying to load a missing image
-        const parent = this.parentElement;
-        if (parent) {
-            parent.innerHTML = `
-                <div style="display: flex; align-items: center; justify-content: center; height: 200px; background: rgba(255,255,255,0.05); border: 2px dashed rgba(255,255,255,0.2); border-radius: 8px; color: rgba(255,255,255,0.6); font-size: 14px;">
-                    <div style="text-align: center;">
-                        <div>📷</div>
-                        <div>Image ${index}</div>
-                        <div style="font-size: 12px; margin-top: 4px;">Not available</div>
-                    </div>
-                </div>
-            `;
-        }
-
-        // Prevent infinite error loops
-        this.onerror = null;
+        this.src = getAssetUrl("placeholder.jpg");
     };
     
     // Add image number
