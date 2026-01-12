@@ -351,9 +351,25 @@ document.addEventListener("DOMContentLoaded", () => {
     
     // Apply gallery hover fixes
     GalleryFixes.applyHoverFix();
-    
 
-    
+
+    // View Projects function
+    viewProjects = () => {
+        const timeline = DOM.query('.timeline');
+        const profile = DOM.query('.profile-image');
+
+        // If timeline is not active, activate it
+        if (timeline && !timeline.classList.contains('active')) {
+            timeline.classList.add('active');
+        }
+
+        // Scroll to timeline section
+        if (timeline) {
+            timeline.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+    };
+
+
     // Expose global functions
     window.toggleExpandable = Timeline.toggleExpandable;
     window.showContent = Content.showContent;
@@ -363,6 +379,7 @@ document.addEventListener("DOMContentLoaded", () => {
     window.prevPage = PDFViewer.prevPage;
     window.nextPage = PDFViewer.nextPage;
     window.closePdfViewer = PDFViewer.closePdfViewer;
+    window.viewProjects = viewProjects;
 });
 
 
