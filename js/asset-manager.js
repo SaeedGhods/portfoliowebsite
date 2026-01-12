@@ -24,10 +24,9 @@ class AssetManager {
         // Always use S3 for both localhost and production
         const url = `${this.s3BaseUrl}/${cleanPath}`;
 
-        // Add Safari-specific cache busting for image URLs
-        if (navigator.userAgent.includes('Safari') && !navigator.userAgent.includes('Chrome') &&
-            (cleanPath.includes('.jpg') || cleanPath.includes('.jpeg') || cleanPath.includes('.png') || cleanPath.includes('.gif'))) {
-            return `${url}?t=${Date.now()}`;
+        // Add cache busting for all browsers to ensure fresh loading
+        if (cleanPath.includes('.jpg') || cleanPath.includes('.jpeg') || cleanPath.includes('.png') || cleanPath.includes('.gif')) {
+            return `${url}?v=${Date.now()}`;
         }
 
         return url;
