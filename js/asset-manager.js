@@ -20,9 +20,17 @@ class AssetManager {
     getAssetUrl(assetPath) {
         // Remove leading slash if present
         const cleanPath = assetPath.startsWith('/') ? assetPath.substring(1) : assetPath;
-        
+
         // Always use S3 for both localhost and production
-        return `${this.s3BaseUrl}/${cleanPath}`;
+        const url = `${this.s3BaseUrl}/${cleanPath}`;
+
+        // Add Safari-specific cache busting for image URLs
+        if (navigator.userAgent.includes('Safari') && !navigator.userAgent.includes('Chrome') &&
+            (cleanPath.includes('.jpg') || cleanPath.includes('.jpeg') || cleanPath.includes('.png') || cleanPath.includes('.gif'))) {
+            return `${url}?t=${Date.now()}`;
+        }
+
+        return url;
     }
     
     /**
