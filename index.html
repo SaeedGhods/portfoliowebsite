@@ -4471,25 +4471,20 @@
                 }
             });
 
-            // Check for bypass parameter to auto-enter portfolio
+            // Check for bypass parameter to auto-enter password
             const urlParams = new URLSearchParams(window.location.search);
             if (urlParams.get('bypass') === 'true') {
-                // Automatically show the portfolio without password
-                const profile = document.getElementById('profile');
-                const timeline = document.querySelector('.timeline');
-                const introText = document.getElementById('introText');
-                const contactLinks = document.querySelector('.contact-links');
-                const passwordContainer = document.getElementById('passwordContainer');
+                // First click the profile to show password input
+                toggleDisplay();
 
-                // Show portfolio content
-                profile.classList.add('active', 'pulse-stopped');
-                timeline.classList.add('active');
-                introText.classList.add('visible');
-                contactLinks.classList.add('timeline-active');
-                passwordContainer.classList.remove('visible');
-
-                // Update click state to expanded
-                clickState = States.EXPANDED;
+                // Then auto-fill and submit the password after a short delay
+                setTimeout(() => {
+                    const passwordInput = document.getElementById('timelinePassword');
+                    if (passwordInput) {
+                        passwordInput.value = 'tsla';
+                        checkPassword();
+                    }
+                }, 100);
             }
 
             // Smooth scrolling for anchor links
