@@ -1,3 +1,6 @@
 {
-  "version": 2
+  "version": 2,
+  "buildCommand": "echo 'Force rebuild'",
+  "outputDirectory": ".",
+  "framework": null
 }
