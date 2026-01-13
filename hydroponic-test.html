@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hydroponic Gallery Diagnostic</title>
+    <script src="js/asset-manager.js"></script>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .test-result { margin: 10px 0; padding: 10px; border-radius: 4px; }
+        .success { background-color: #d4edda; color: #155724; border: 1px solid #c3e6cb; }
+        .error { background-color: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; }
+        img { max-width: 200px; margin: 10px; border: 1px solid #ccc; }
+        .loading { color: #666; }
+    </style>
+</head>
+<body>
+    <h1>Hydroponic Gallery Diagnostic</h1>
+    <div id="results"></div>
+
+    <script>
+        const resultsDiv = document.getElementById('results');
+
+        function addResult(message, type = 'info') {
+            const div = document.createElement('div');
+            div.className = `test-result ${type}`;
+            div.textContent = message;
+            resultsDiv.appendChild(div);
+            console.log(message);
+        }
+
+        function testImage(url, description) {
+            return new Promise((resolve) => {
+                const img = new Image();
+                const startTime = Date.now();
+
+                img.onload = () => {
+                    const loadTime = Date.now() - startTime;
+                    addResult(`✓ ${description}: Loaded successfully (${loadTime}ms, ${img.naturalWidth}x${img.naturalHeight})`, 'success');
+                    resolve(true);
+                };
+
+                img.onerror = () => {
+                    const loadTime = Date.now() - startTime;
+                    addResult(`✗ ${description}: Failed to load after ${loadTime}ms`, 'error');
+                    resolve(false);
+                };
+
+                img.src = url;
+            });
+        }
+
+        async function runDiagnostics() {
+            addResult('Starting hydroponic gallery diagnostics...');
+            addResult(`Current domain: ${window.location.origin}`);
+            addResult(`User agent: ${navigator.userAgent}`);
+
+            // Test asset manager URLs
+            const testUrls = [
+                { url: getAssetUrl('hydroponic/JPEG/11.jpg'), desc: 'Image 11 via asset manager' },
+                { url: getAssetUrl('hydroponic/JPEG/10.jpg'), desc: 'Image 10 via asset manager' },
+                { url: getAssetUrl('hydroponic/JPEG/12.jpg'), desc: 'Image 12 via asset manager' },
+                { url: getAssetUrl('placeholder-image.jpg'), desc: 'Placeholder via asset manager' },
+            ];
+
+            for (const test of testUrls) {
+                await testImage(test.url, test.desc);
+            }
+
+            // Test the specific images the user reported as missing
+            addResult('Testing the images you reported as missing...');
+            const reportedMissing = ['11', '13', '14', '15', '16', '17', '18', '19', '20', '23', '24', '25', '27', '28', '34', '35'];
+            const missingTests = reportedMissing.map(num => ({
+                url: getAssetUrl(`hydroponic/JPEG/${num}.jpg`),
+                desc: `Missing Image ${num}`
+            }));
+
+            let missingSuccessCount = 0;
+            let missingFailCount = 0;
+
+            for (const test of missingTests) {
+                const success = await testImage(test.url, test.desc);
+                if (success) missingSuccessCount++;
+                else missingFailCount++;
+            }
+
+            addResult(`Missing images test: ${missingSuccessCount} loaded, ${missingFailCount} failed`, missingFailCount > 0 ? 'error' : 'success');
+
+            // Test a batch of working images for comparison
+            addResult('Testing some images that should work...');
+            const workingBatch = ['01', '02', '03', '04', '05'].map(num => ({
+                url: getAssetUrl(`hydroponic/JPEG/${num}.jpg`),
+                desc: `Working Image ${num}`
+            }));
+
+            let workingSuccessCount = 0;
+            let workingFailCount = 0;
+
+            for (const test of workingBatch) {
+                const success = await testImage(test.url, test.desc);
+                if (success) workingSuccessCount++;
+                else workingFailCount++;
+            }
+
+            addResult(`Working images test: ${workingSuccessCount} loaded, ${workingFailCount} failed`, workingFailCount > 0 ? 'error' : 'success');
+
+            // Test direct S3 URLs
+            addResult('Testing direct S3 URLs...');
+            const directUrls = [
+                { url: 'https://saeedghods-portfolio-assets.s3.us-east-2.amazonaws.com/assets/hydroponic/JPEG/11.jpg', desc: 'Image 11 direct S3' },
+                { url: 'https://saeedghods-portfolio-assets.s3.us-east-2.amazonaws.com/assets/placeholder-image.jpg', desc: 'Placeholder direct S3' },
+            ];
+
+            for (const test of directUrls) {
+                await testImage(test.url, test.desc);
+            }
+
+            // Test CORS by trying to fetch with different methods
+            addResult('Testing CORS behavior...');
+            try {
+                // Test simple fetch
+                fetch('https://saeedghods-portfolio-assets.s3.us-east-2.amazonaws.com/assets/hydroponic/JPEG/11.jpg')
+                .then(response => {
+                    addResult(`✓ Simple fetch succeeded: ${response.status}`, 'success');
+                    return response.blob();
+                })
+                .then(blob => {
+                    addResult(`✓ Blob created successfully (${blob.size} bytes)`, 'success');
+                })
+                .catch(error => {
+                    addResult(`✗ Simple fetch failed: ${error.message}`, 'error');
+                });
+
+                // Test with CORS mode
+                fetch('https://saeedghods-portfolio-assets.s3.us-east-2.amazonaws.com/assets/hydroponic/JPEG/11.jpg', {
+                    method: 'GET',
+                    mode: 'cors'
+                }).then(response => {
+                    addResult('✓ CORS mode fetch succeeded', 'success');
+                }).catch(error => {
+                    addResult(`✗ CORS mode fetch failed: ${error.message}`, 'error');
+                });
+
+                // Test HEAD request
+                fetch('https://saeedghods-portfolio-assets.s3.us-east-2.amazonaws.com/assets/hydroponic/JPEG/11.jpg', {
+                    method: 'HEAD',
+                    mode: 'cors'
+                }).then(response => {
+                    if (response.ok) {
+                        addResult('✓ CORS HEAD test passed', 'success');
+                    } else {
+                        addResult(`✗ CORS HEAD failed: ${response.status}`, 'error');
+                    }
+                }).catch(error => {
+                    addResult(`✗ CORS HEAD fetch failed: ${error.message}`, 'error');
+                });
+
+            } catch (e) {
+                addResult(`CORS test error: ${e.message}`, 'error');
+            }
+
+            // Test XMLHttpRequest
+            addResult('Testing XMLHttpRequest...');
+            const xhr = new XMLHttpRequest();
+            xhr.open('GET', 'https://saeedghods-portfolio-assets.s3.us-east-2.amazonaws.com/assets/hydroponic/JPEG/11.jpg');
+            xhr.onload = () => {
+                addResult(`✓ XMLHttpRequest succeeded: ${xhr.status}`, 'success');
+            };
+            xhr.onerror = () => {
+                addResult('✗ XMLHttpRequest failed', 'error');
+            };
+            xhr.send();
+
+            // Test lazy loading behavior
+            addResult('Testing lazy loading simulation...');
+            setTimeout(() => {
+                addResult('Testing images after delay (simulating lazy loading)...');
+                testImage(getAssetUrl('hydroponic/JPEG/15.jpg'), 'Image 15 (delayed test)');
+                testImage(getAssetUrl('hydroponic/JPEG/20.jpg'), 'Image 20 (delayed test)');
+            }, 2000);
+
+            addResult('Diagnostics complete. Check console for detailed error information.');
+            addResult('Note: If lazy-loaded images fail while immediate ones succeed, it confirms timing-based CORS blocking.');
+        }
+
+        // Run diagnostics when page loads
+        window.addEventListener('load', runDiagnostics);
+    </script>
+</body>
+</html>
