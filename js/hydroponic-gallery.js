@@ -191,3 +191,4 @@ function createFallbackModal() {
     
     return modal;
 }
+// Force cache invalidation - Tue Jan 13 15:08:43 EST 2026
