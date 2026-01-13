@@ -232,7 +232,7 @@ class GalleryManager {
                     console.error(`Gallery thumbnail failed to load: ${src}`);
                     console.error(`Thumbnail naturalWidth: ${img.naturalWidth}, naturalHeight: ${img.naturalHeight}`);
                     console.error(`Browser: ${navigator.userAgent.split(' ').pop()}`);
-                    console.error(`This is a CORS issue - Safari allows this, Chrome blocks it. Configure S3 CORS.`);
+                    console.error(`Possible causes: Image file missing at S3 path, wrong file extension, or network error`);
                     console.error(`Setting fallback to placeholder`);
                     img.src = getAssetUrl("placeholder-image.jpg"); // Fallback image
                     handleImageError(src);
@@ -571,10 +571,11 @@ function initGalleries() {
             trumanGallery.style.gridTemplateColumns = "repeat(5, 1fr) !important";
         }
         
-        if (hydroponicGallery && !hydroponicGallery.classList.contains("initialized")) {
-            console.log("Initializing hydroponicGallery with common gallery manager");
-            galleryManager.initializeGallery("hydroponicGallery", hydroponicImages);
-        }
+        // Skip hydroponic gallery initialization - handled by hydroponic-gallery.js
+        // if (hydroponicGallery && !hydroponicGallery.classList.contains("initialized")) {
+        //     console.log("Initializing hydroponicGallery with common gallery manager");
+        //     galleryManager.initializeGallery("hydroponicGallery", hydroponicImages);
+        // }
         
         console.log("Galleries initialized");
     } catch (error) {
