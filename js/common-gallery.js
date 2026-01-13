@@ -229,6 +229,11 @@ class GalleryManager {
                 
                 // Add error handling
                 img.onerror = () => {
+                    console.error(`Gallery thumbnail failed to load: ${src}`);
+                    console.error(`Thumbnail naturalWidth: ${img.naturalWidth}, naturalHeight: ${img.naturalHeight}`);
+                    console.error(`Browser: ${navigator.userAgent.split(' ').pop()}`);
+                    console.error(`This is a CORS issue - Safari allows this, Chrome blocks it. Configure S3 CORS.`);
+                    console.error(`Setting fallback to placeholder`);
                     img.src = getAssetUrl("placeholder-image.jpg"); // Fallback image
                     handleImageError(src);
                 };
@@ -280,6 +285,8 @@ class GalleryManager {
             };
             
             this.modalImg.onerror = () => {
+                console.error(`Modal image failed to load: ${images[index]}`);
+                console.error(`Modal image naturalWidth: ${this.modalImg.naturalWidth}, naturalHeight: ${this.modalImg.naturalHeight}`);
                 this.modalLoading.style.display = "none";
                 this.modalError.style.display = "flex";
             };

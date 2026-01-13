@@ -5,41 +5,41 @@
 
 // Define the hydroponic gallery images
 const hydroponicImages = [
-    getAssetUrl("hydroponic/JPEG/01.jpg"),
-    getAssetUrl("hydroponic/JPEG/02.jpg"),
-    getAssetUrl("hydroponic/JPEG/03.jpg"),
-    getAssetUrl("hydroponic/JPEG/04.jpg"),
-    getAssetUrl("hydroponic/JPEG/05.jpg"),
-    getAssetUrl("hydroponic/JPEG/06.jpg"),
-    getAssetUrl("hydroponic/JPEG/07.jpg"),
-    getAssetUrl("hydroponic/JPEG/08.jpg"),
-    getAssetUrl("hydroponic/JPEG/09.jpg"),
-    getAssetUrl("hydroponic/JPEG/10.jpg"),
-    getAssetUrl("hydroponic/JPEG/11.jpg"),
-    getAssetUrl("hydroponic/JPEG/12.jpg"),
-    getAssetUrl("hydroponic/JPEG/13.jpg"),
-    getAssetUrl("hydroponic/JPEG/14.jpg"),
-    getAssetUrl("hydroponic/JPEG/15.jpg"),
-    getAssetUrl("hydroponic/JPEG/16.jpg"),
-    getAssetUrl("hydroponic/JPEG/17.jpg"),
-    getAssetUrl("hydroponic/JPEG/18.jpg"),
-    getAssetUrl("hydroponic/JPEG/19.jpg"),
-    getAssetUrl("hydroponic/JPEG/20.jpg"),
-    getAssetUrl("hydroponic/JPEG/21.jpg"),
-    getAssetUrl("hydroponic/JPEG/22.jpg"),
-    getAssetUrl("hydroponic/JPEG/23.jpg"),
-    getAssetUrl("hydroponic/JPEG/24.jpg"),
-    getAssetUrl("hydroponic/JPEG/25.jpg"),
-    getAssetUrl("hydroponic/JPEG/26.jpg"),
-    getAssetUrl("hydroponic/JPEG/27.jpg"),
-    getAssetUrl("hydroponic/JPEG/28.jpg"),
-    getAssetUrl("hydroponic/JPEG/29.jpg"),
-    getAssetUrl("hydroponic/JPEG/30.jpg"),
-    getAssetUrl("hydroponic/JPEG/31.jpg"),
-    getAssetUrl("hydroponic/JPEG/32.jpg"),
-    getAssetUrl("hydroponic/JPEG/33.jpg"),
-    getAssetUrl("hydroponic/JPEG/34.jpg"),
-    getAssetUrl("hydroponic/JPEG/35.jpg")
+    getAssetUrl("hydroponic/JPEG/JPEG/01.jpeg"),
+    getAssetUrl("hydroponic/JPEG/JPEG/02.jpeg"),
+    getAssetUrl("hydroponic/JPEG/JPEG/03.jpeg"),
+    getAssetUrl("hydroponic/JPEG/JPEG/04.jpeg"),
+    getAssetUrl("hydroponic/JPEG/JPEG/05.jpeg"),
+    getAssetUrl("hydroponic/JPEG/JPEG/06.jpeg"),
+    getAssetUrl("hydroponic/JPEG/JPEG/07.jpeg"),
+    getAssetUrl("hydroponic/JPEG/JPEG/08.jpeg"),
+    getAssetUrl("hydroponic/JPEG/JPEG/09.jpeg"),
+    getAssetUrl("hydroponic/JPEG/JPEG/10.jpeg"),
+    getAssetUrl("hydroponic/JPEG/JPEG/11.jpg"),
+    getAssetUrl("hydroponic/JPEG/JPEG/12.jpeg"),
+    getAssetUrl("hydroponic/JPEG/JPEG/13.jpg"),
+    getAssetUrl("hydroponic/JPEG/JPEG/14.jpg"),
+    getAssetUrl("hydroponic/JPEG/JPEG/15.jpg"),
+    getAssetUrl("hydroponic/JPEG/JPEG/16.jpg"),
+    getAssetUrl("hydroponic/JPEG/JPEG/17.jpg"),
+    getAssetUrl("hydroponic/JPEG/JPEG/18.jpg"),
+    getAssetUrl("hydroponic/JPEG/JPEG/19.jpg"),
+    getAssetUrl("hydroponic/JPEG/JPEG/20.jpg"),
+    getAssetUrl("hydroponic/JPEG/JPEG/21.jpeg"),
+    getAssetUrl("hydroponic/JPEG/JPEG/22.jpeg"),
+    getAssetUrl("hydroponic/JPEG/JPEG/23.jpg"),
+    getAssetUrl("hydroponic/JPEG/JPEG/24.jpg"),
+    getAssetUrl("hydroponic/JPEG/JPEG/25.jpg"),
+    getAssetUrl("hydroponic/JPEG/JPEG/26.jpg"),
+    getAssetUrl("hydroponic/JPEG/JPEG/27.jpg"),
+    getAssetUrl("hydroponic/JPEG/JPEG/28.jpg"),
+    getAssetUrl("hydroponic/JPEG/JPEG/29.jpeg"),
+    getAssetUrl("hydroponic/JPEG/JPEG/30.jpeg"),
+    getAssetUrl("hydroponic/JPEG/JPEG/31.jpg"),
+    getAssetUrl("hydroponic/JPEG/JPEG/32.jpeg"),
+    getAssetUrl("hydroponic/JPEG/JPEG/33.jpeg"),
+    getAssetUrl("hydroponic/JPEG/JPEG/34.jpg"),
+    getAssetUrl("hydroponic/JPEG/JPEG/35.jpg")
 ];
 
 // Initialize when DOM is loaded
@@ -116,7 +116,10 @@ function createImageItem(container, imagePath, index) {
     
     // Add error handling
     img.onerror = function() {
-        console.error(`Failed to load image: ${imagePath}`);
+        console.error(`Failed to load hydroponic image: ${imagePath}`);
+        console.error(`Image naturalWidth: ${this.naturalWidth}, naturalHeight: ${this.naturalHeight}`);
+        console.error(`Image current src: ${this.src}`);
+        console.error(`Attempting to load placeholder instead`);
         this.src = getAssetUrl("placeholder.jpg");
     };
     
