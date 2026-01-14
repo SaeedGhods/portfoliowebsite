@@ -2,8 +2,5 @@
   "version": 2,
   "buildCommand": "echo 'Force rebuild'",
   "outputDirectory": ".",
-  "framework": null,
-  "analytics": {
-    "enabled": true
-  }
+  "framework": null
 }
