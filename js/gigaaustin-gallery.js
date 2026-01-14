@@ -26,16 +26,13 @@ document.addEventListener("DOMContentLoaded", function() {
     const images = [
         getAssetUrl(`gigaaustin/JPEG/01.jpg?v=${version}`),
         getAssetUrl(`gigaaustin/JPEG/02.jpg?v=${version}`),
-        getAssetUrl(`gigaaustin/JPEG/03.jpg?v=${version}`),
         getAssetUrl(`gigaaustin/JPEG/04.jpg?v=${version}`),
         getAssetUrl(`gigaaustin/JPEG/05.jpg?v=${version}`),
         getAssetUrl(`gigaaustin/JPEG/06.jpg?v=${version}`),
-        getAssetUrl(`gigaaustin/JPEG/07.jpg?v=${version}`),
         getAssetUrl(`gigaaustin/JPEG/08.jpg?v=${version}`),
         getAssetUrl(`gigaaustin/JPEG/10.jpg?v=${version}`),
         getAssetUrl(`gigaaustin/JPEG/11.jpg?v=${version}`),
         getAssetUrl(`gigaaustin/JPEG/12.jpg?v=${version}`),
-        getAssetUrl(`gigaaustin/JPEG/13.jpg?v=${version}`),
         getAssetUrl(`gigaaustin/JPEG/14.jpg?v=${version}`)
     ];
 
