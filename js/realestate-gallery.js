@@ -17,17 +17,17 @@ function initRealEstateGallery() {
 
     // Define the image paths for the Real Estate License Gallery (removed first 10 photos from 29hp folder)
     const images = [
-        // 17t folder (10 images) - only showing these images now
-        getAssetUrl("realestate/JPEG/17t/01.jpg"),
-        getAssetUrl("realestate/JPEG/17t/02.jpg"),
-        getAssetUrl("realestate/JPEG/17t/03.jpg"),
-        getAssetUrl("realestate/JPEG/17t/04.jpg"),
-        getAssetUrl("realestate/JPEG/17t/05.jpg"),
-        getAssetUrl("realestate/JPEG/17t/06.jpg"),
-        getAssetUrl("realestate/JPEG/17t/07.jpg"),
-        getAssetUrl("realestate/JPEG/17t/08.jpg"),
-        getAssetUrl("realestate/JPEG/17t/09.jpg"),
-        getAssetUrl("realestate/JPEG/17t/10.jpg")
+        // 17t folder (10 images) - only showing these images now with Vercel optimization
+        getAssetUrl("realestate/JPEG/17t/01.jpg", { w: 500, q: 85 }),
+        getAssetUrl("realestate/JPEG/17t/02.jpg", { w: 500, q: 85 }),
+        getAssetUrl("realestate/JPEG/17t/03.jpg", { w: 500, q: 85 }),
+        getAssetUrl("realestate/JPEG/17t/04.jpg", { w: 500, q: 85 }),
+        getAssetUrl("realestate/JPEG/17t/05.jpg", { w: 500, q: 85 }),
+        getAssetUrl("realestate/JPEG/17t/06.jpg", { w: 500, q: 85 }),
+        getAssetUrl("realestate/JPEG/17t/07.jpg", { w: 500, q: 85 }),
+        getAssetUrl("realestate/JPEG/17t/08.jpg", { w: 500, q: 85 }),
+        getAssetUrl("realestate/JPEG/17t/09.jpg", { w: 500, q: 85 }),
+        getAssetUrl("realestate/JPEG/17t/10.jpg", { w: 500, q: 85 })
     ];
     
     console.log("Prepared image paths:", images.length, "images");

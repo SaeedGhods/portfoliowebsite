@@ -21,19 +21,18 @@ document.addEventListener("DOMContentLoaded", function() {
     // Debug info
     console.log("Giga Austin gallery container found", galleryContainer);
 
-    // List of Giga Austin event images with cache-busting version
-    const version = new Date().getTime(); // Use timestamp for cache busting
+    // List of Giga Austin event images with Vercel optimization
     const images = [
-        getAssetUrl(`gigaaustin/JPEG/01.jpg?v=${version}`),
-        getAssetUrl(`gigaaustin/JPEG/02.jpg?v=${version}`),
-        getAssetUrl(`gigaaustin/JPEG/04.jpg?v=${version}`),
-        getAssetUrl(`gigaaustin/JPEG/05.jpg?v=${version}`),
-        getAssetUrl(`gigaaustin/JPEG/06.jpg?v=${version}`),
-        getAssetUrl(`gigaaustin/JPEG/08.jpg?v=${version}`),
-        getAssetUrl(`gigaaustin/JPEG/10.jpg?v=${version}`),
-        getAssetUrl(`gigaaustin/JPEG/11.jpg?v=${version}`),
-        getAssetUrl(`gigaaustin/JPEG/12.jpg?v=${version}`),
-        getAssetUrl(`gigaaustin/JPEG/14.jpg?v=${version}`)
+        getAssetUrl(`gigaaustin/JPEG/01.jpg`, { w: 500, q: 85 }), // Thumbnail size for gallery
+        getAssetUrl(`gigaaustin/JPEG/02.jpg`, { w: 500, q: 85 }),
+        getAssetUrl(`gigaaustin/JPEG/04.jpg`, { w: 500, q: 85 }),
+        getAssetUrl(`gigaaustin/JPEG/05.jpg`, { w: 500, q: 85 }),
+        getAssetUrl(`gigaaustin/JPEG/06.jpg`, { w: 500, q: 85 }),
+        getAssetUrl(`gigaaustin/JPEG/08.jpg`, { w: 500, q: 85 }),
+        getAssetUrl(`gigaaustin/JPEG/10.jpg`, { w: 500, q: 85 }),
+        getAssetUrl(`gigaaustin/JPEG/11.jpg`, { w: 500, q: 85 }),
+        getAssetUrl(`gigaaustin/JPEG/12.jpg`, { w: 500, q: 85 }),
+        getAssetUrl(`gigaaustin/JPEG/14.jpg`, { w: 500, q: 85 })
     ];
 
     // Force the correct styles first - ensure 5-column grid
@@ -127,21 +126,21 @@ function openImageModal(imagePath, index, images) {
         window.galleryManager.openModal(images, index);
         return;
     }
-    
+
     // Fallback modal implementation
     console.log("Using fallback modal for Giga Austin gallery");
-    
+
     // Create modal elements if they don't exist
     let modal = document.querySelector(".gallery-modal");
     if (!modal) {
         modal = document.createElement("div");
         modal.className = "gallery-modal";
         document.body.appendChild(modal);
-        
+
         // Create modal content
         const modalContent = document.createElement("div");
         modalContent.className = "gallery-modal-content";
-        
+
         // Create close button
         const closeBtn = document.createElement("span");
         closeBtn.className = "gallery-modal-close";
@@ -149,24 +148,25 @@ function openImageModal(imagePath, index, images) {
         closeBtn.onclick = function() {
             modal.style.display = "none";
         };
-        
+
         // Create image element
         const modalImg = document.createElement("img");
         modalImg.className = "gallery-modal-img";
         modalImg.loading = "lazy";
-        
+
         // Assemble modal
         modalContent.appendChild(closeBtn);
         modalContent.appendChild(modalImg);
         modal.appendChild(modalContent);
     }
-    
+
     // Get modal elements
     const modalImg = modal.querySelector(".gallery-modal-img");
-    
-    // Set image source
-    modalImg.src = imagePath;
-    
+
+    // For modal view, use higher resolution image
+    const highResImagePath = getAssetUrl(`gigaaustin/JPEG/${String(index + 1).padStart(2, '0')}.jpg`, { w: 1200, q: 90 });
+    modalImg.src = highResImagePath;
+
     // Show modal
     modal.style.display = "flex";
 }
