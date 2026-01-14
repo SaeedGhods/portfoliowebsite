@@ -15,21 +15,9 @@ function initRealEstateGallery() {
     
     console.log("Found trumanGallery container:", galleryContainer);
 
-    // Define the image paths for the Real Estate License Gallery in the requested order (29hp, 17t)
+    // Define the image paths for the Real Estate License Gallery (removed first 10 photos from 29hp folder)
     const images = [
-        // 29hp folder (10 images)
-        getAssetUrl("realestate/JPEG/29hp/1.jpg"),
-        getAssetUrl("realestate/JPEG/29hp/2.jpg"),
-        getAssetUrl("realestate/JPEG/29hp/3.jpg"),
-        getAssetUrl("realestate/JPEG/29hp/4.jpg"),
-        getAssetUrl("realestate/JPEG/29hp/5.jpg"),
-        getAssetUrl("realestate/JPEG/29hp/6.jpg"),
-        getAssetUrl("realestate/JPEG/29hp/7.jpg"),
-        getAssetUrl("realestate/JPEG/29hp/8.jpg"),
-        getAssetUrl("realestate/JPEG/29hp/9.jpg"),
-        getAssetUrl("realestate/JPEG/29hp/10.jpg"),
-        
-        // 17t folder (10 images) - updated to use zero-padded filenames
+        // 17t folder (10 images) - only showing these images now
         getAssetUrl("realestate/JPEG/17t/01.jpg"),
         getAssetUrl("realestate/JPEG/17t/02.jpg"),
         getAssetUrl("realestate/JPEG/17t/03.jpg"),
