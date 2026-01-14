@@ -15,44 +15,14 @@ class AssetManager {
     /**
      * Get the correct asset URL based on environment
      * @param {string} assetPath - Path relative to assets folder (e.g., 'hydroponic/JPEG/01.jpg')
-     * @param {object} options - Image optimization options (width, quality, format)
-     * @returns {string} - Full URL to the asset with Vercel optimization
+     * @returns {string} - Full URL to the asset
      */
-    getAssetUrl(assetPath, options = {}) {
+    getAssetUrl(assetPath) {
         // Remove leading slash if present
         const cleanPath = assetPath.startsWith('/') ? assetPath.substring(1) : assetPath;
 
-        // Get the base S3 URL
-        const s3Url = `${this.s3BaseUrl}/${cleanPath}`;
-
-        // For localhost development, return direct S3 URL (no Vercel optimization)
-        if (this.isLocalhost) {
-            return s3Url;
-        }
-
-        // For production, use Vercel Image Optimization
-        const baseUrl = window.location.origin; // Gets the current domain
-        const encodedS3Url = encodeURIComponent(s3Url);
-
-        // Default optimization settings
-        const defaults = {
-            w: 800,    // Default width (good balance for galleries)
-            q: 80,     // Quality (good balance between size and quality)
-            f: 'auto'  // Auto format (WebP/AVIF when supported)
-        };
-
-        // Merge with provided options
-        const settings = { ...defaults, ...options };
-
-        // Build Vercel optimization URL
-        const params = new URLSearchParams({
-            url: encodedS3Url,
-            w: settings.w.toString(),
-            q: settings.q.toString(),
-            f: settings.f
-        });
-
-        return `${baseUrl}/_vercel/image?${params.toString()}`;
+        // Always use S3 for both localhost and production
+        return `${this.s3BaseUrl}/${cleanPath}`;
     }
     
     /**

@@ -3,18 +3,18 @@
  * Displays photos of the personal family home designed and developed by Ghods Builders Inc.
  */
 
-// Define the 29 High Point Road gallery images with Vercel optimization
+// Define the 29 High Point Road gallery images
 const highPointRoadImages = [
-    getAssetUrl('realestate/JPEG/29hp/01.jpg', { w: 500, q: 85 }),
-    getAssetUrl('realestate/JPEG/29hp/02.jpg', { w: 500, q: 85 }),
-    getAssetUrl('realestate/JPEG/29hp/03.jpg', { w: 500, q: 85 }),
-    getAssetUrl('realestate/JPEG/29hp/04.jpg', { w: 500, q: 85 }),
-    getAssetUrl('realestate/JPEG/29hp/05.jpg', { w: 500, q: 85 }),
-    getAssetUrl('realestate/JPEG/29hp/06.jpg', { w: 500, q: 85 }),
-    getAssetUrl('realestate/JPEG/29hp/07.jpg', { w: 500, q: 85 }),
-    getAssetUrl('realestate/JPEG/29hp/08.jpg', { w: 500, q: 85 }),
-    getAssetUrl('realestate/JPEG/29hp/09.jpg', { w: 500, q: 85 }),
-    getAssetUrl('realestate/JPEG/29hp/10.jpg', { w: 500, q: 85 })
+    getAssetUrl('realestate/JPEG/29hp/01.jpg'),
+    getAssetUrl('realestate/JPEG/29hp/02.jpg'),
+    getAssetUrl('realestate/JPEG/29hp/03.jpg'),
+    getAssetUrl('realestate/JPEG/29hp/04.jpg'),
+    getAssetUrl('realestate/JPEG/29hp/05.jpg'),
+    getAssetUrl('realestate/JPEG/29hp/06.jpg'),
+    getAssetUrl('realestate/JPEG/29hp/07.jpg'),
+    getAssetUrl('realestate/JPEG/29hp/08.jpg'),
+    getAssetUrl('realestate/JPEG/29hp/09.jpg'),
+    getAssetUrl('realestate/JPEG/29hp/10.jpg')
 ];
 
 // Initialize the gallery when the page loads
