@@ -132,6 +132,27 @@
             background: var(--focus-color);
         }
 
+        .section-header {
+            text-align: center;
+            margin: 40px 0 20px 0;
+            padding: 20px 0;
+            border-top: 2px solid rgba(255, 255, 255, 0.1);
+            border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .section-header h2 {
+            font-size: 1.4em;
+            margin: 0;
+            color: var(--highlight-color);
+            font-weight: 500;
+        }
+
+        .section-header p {
+            font-size: 0.9em;
+            opacity: 0.8;
+            margin: 5px 0 0 0;
+        }
+
         @media (max-width: 768px) {
             .container {
                 padding: 15px;
@@ -144,6 +165,15 @@
             .projects-grid {
                 grid-template-columns: 1fr;
             }
+
+            .section-header {
+                margin: 30px 0 15px 0;
+                padding: 15px 0;
+            }
+
+            .section-header h2 {
+                font-size: 1.2em;
+            }
         }
     </style>
 </head>
@@ -154,6 +184,10 @@
         <div class="projects-header">
             <h1>Architectural Projects</h1>
             <p>Explore some but not all of my Architectural Design works below;</p>
+        </div>
+
+        <div class="section-header">
+            <h2>Professional-Works at Ghods Builders</h2>
         </div>
 
         <div class="projects-grid">
@@ -174,7 +208,13 @@
                 <h3>3. 29 High Point Road</h3>
                 <p>This is a single family luxury Residence ~40,000 sq ft. I was the Lead Architectural Designer and played a key role in the design and development of this project while at Ghods Builders Inc.</p>
             </a>
+        </div>
 
+        <div class="section-header">
+            <h2>Academic-Works from USC School of Architecture</h2>
+        </div>
+
+        <div class="projects-grid">
             <!-- Live Work Portfolio -->
             <a href="https://saeedghods-portfolio-assets.s3.us-east-2.amazonaws.com/assets/keyprojects/5.25_SAEED+GHODS+LIVE+WORK+PORTFOLIO.PDF" target="_blank" class="project-card">
                 <h3>4. Live Work Portfolio</h3>
