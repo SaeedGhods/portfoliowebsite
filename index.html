@@ -4547,13 +4547,11 @@
                     <div class="expandable">
                         <p>Lead Architectural Designer representing Ghods Builders Inc. as development partner on 800 Broadway, a landmark 40-story mixed-use tower in Downtown San Diego. The 440-foot tower features 389 residential units, ground-level retail, and San Diego's highest rooftop pool, transforming a former parking lot into a vibrant urban destination adjacent to Gaslamp Quarter and Petco Park.</p>
                         <div class="media-type-buttons">
-                            <div class="media-type-button pdf active" onclick="toggle800BroadwayMediaType(event, 'pdf')" data-media-type="pdf">PDF</div>
+                            <div class="media-type-button jpeg active" onclick="toggle800BroadwayMediaType(event, 'jpeg')" data-media-type="jpeg">JPEG</div>
+                            <div class="media-type-button pdf" onclick="toggle800BroadwayMediaType(event, 'pdf')" data-media-type="pdf">PDF</div>
                         </div>
-                        <div class="broadway-pdf-buttons-container">
-                            <a href="https://saeedghods-portfolio-assets.s3.us-east-2.amazonaws.com/assets/keyprojects/SAEED+GHODS+PROFESSIONAL+800+BROADWAY.PDF" target="_blank" class="broadway-pdf-view-button">
-                                View 800 Broadway Project PDF
-                            </a>
-                        </div>
+                        <div class="broadway-pdf-buttons-container"></div>
+                        <div id="broadway800Gallery" class="gallery-container"></div>
                     </div>
                 </div>
 
@@ -4564,14 +4562,10 @@
                     <div class="expandable">
                         <p>Lead Architectural Designer for Ghods Builders Inc. on 5959 Yonge Street, an innovative luxury condominium development featuring twin towers of 43 and 31 storeys in North York, Toronto. Coordinated with Kirkor Architects from conceptual design through project delivery, overseeing the integration of over 40,000 sq.ft. of world-class amenities including the industry-first multi-purpose LED sports court, 10-pin bowling alley, rooftop terraces, and the signature Sky Atrium providing panoramic Yonge Street vistas.</p>
                         <div class="media-type-buttons">
-                            <div class="media-type-button jpg active" onclick="toggleYonge5959MediaType(event, 'jpg')" data-media-type="jpg">JPG</div>
+                            <div class="media-type-button jpeg active" onclick="toggleYonge5959MediaType(event, 'jpeg')" data-media-type="jpeg">JPEG</div>
                             <div class="media-type-button pdf" onclick="toggleYonge5959MediaType(event, 'pdf')" data-media-type="pdf">PDF</div>
                         </div>
-                        <div class="yonge5959-pdf-buttons-container">
-                            <a href="https://saeedghods-portfolio-assets.s3.us-east-2.amazonaws.com/assets/keyprojects/SAEED+GHODS+PROFESSIONAL+5959+YONGE+ST+PLANS+HIGHRISE.PDF" target="_blank" class="yonge5959-pdf-view-button">
-                                View 5959 Yonge Street Condo Plans PDF
-                            </a>
-                        </div>
+                        <div class="yonge5959-pdf-buttons-container"></div>
                         <div id="yonge5959Gallery" class="gallery-container"></div>
                     </div>
                 </div>
@@ -5655,25 +5649,6 @@
                 }
             }
 
-            // 800 Broadway PDF toggle function
-            function toggle800BroadwayMediaType(event, mediaType) {
-                event.stopPropagation();
-
-                if (mediaType === 'pdf') {
-                    // Open the PDF in a new tab
-                    window.open('https://saeedghods-portfolio-assets.s3.us-east-2.amazonaws.com/assets/keyprojects/SAEED+GHODS+PROFESSIONAL+800+BROADWAY.PDF', '_blank');
-                }
-            }
-
-            // 5959 Yonge Street PDF toggle function
-            function toggleYonge5959MediaType(event, mediaType) {
-                event.stopPropagation();
-
-                if (mediaType === 'pdf') {
-                    // Open the PDF in a new tab
-                    window.open('https://saeedghods-portfolio-assets.s3.us-east-2.amazonaws.com/assets/keyprojects/SAEED+GHODS+PROFESSIONAL+5959+YONGE+ST+PLANS+HIGHRISE.PDF', '_blank');
-                }
-            }
         </script>
         
     <!-- Timestamp updater script -->
