@@ -1455,412 +1455,8 @@
         }
     </style>
     <style>
-        /* Password input styling */
-        .password-container {
-            display: block;
-            margin: 10px auto;
-            max-width: 300px;
-            text-align: center;
-        }
-        
-        .timeline-password {
-            padding: 8px 12px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 4px;
-            background-color: rgba(0, 0, 0, 0.5);
-            color: white;
-            font-family: 'Roboto Mono', monospace;
-            width: 100%;
-            max-width: 300px;
-            text-align: center;
-            transition: all 0.3s var(--smooth-ease);
-            backdrop-filter: blur(5px);
-            -webkit-backdrop-filter: blur(5px);
-        }
-        
-        .timeline-password:focus {
-            border-color: rgba(0, 116, 217, 0.5);
-            box-shadow: 0 0 0 2px rgba(0, 116, 217, 0.2);
-            outline: none;
-        }
-        
-        .password-container.visible {
-            display: block;
-            animation: fadeIn 0.5s;
-        }
-        
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-        
-        /* Add subtle indicator for password field */
-        .timeline-password::placeholder {
-            color: rgba(255, 255, 255, 0.4);
-            transition: all 0.3s ease;
-        }
-        
-        .timeline-password:focus::placeholder {
-            opacity: 0.7;
-        }
-        
-        /* Improve timeline header appearance */
-        .timeline-header {
-            position: relative;
-            transition: color 0.3s var(--smooth-ease);
-        }
-        
-        .timeline-item.expanded .timeline-header {
-            color: var(--highlight-color);
-        }
-        
-        /* Ensure all galleries maintain 5-column layout */
-        #teslaNorthHollywoodGallery,
-        #gigaAustinGallery,
-        #cybermaskGallery,
-        #uscGallery,
-        .gallery-container {
-            display: grid;
-            grid-template-columns: repeat(5, 1fr) !important;
-            gap: 10px;
-            width: 62.5%;
-        }
-    </style>
-    <style>
-        /* Gallery Container Styles */
-        .gallery-container {
-            display: grid;
-            grid-template-columns: repeat(5, 1fr) !important;
-            gap: 10px;
-            margin: 20px 0;
-            width: 62.5%;
-            margin-left: 0;
-            margin-right: auto;
-            justify-content: left;
-        }
-
-        .gallery-item {
-            position: relative;
-            width: 100%;
-            padding-bottom: 100%;
-            background: var(--background-color);
-            overflow: hidden;
-            margin: 0;
-        }
-
-        .gallery-item img {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            filter: saturate(0.22);
-            transition: filter 0.3s ease;
-        }
-
-        .gallery-item:hover img {
-            filter: saturate(1);
-        }
-
-        .gallery-item .image-number {
-            position: absolute;
-            bottom: 5px;
-            right: 10px;
-            color: black;
-            padding: 2px 8px;
-            border-radius: 10px;
-            font-size: 12px;
-            opacity: 1;
-            transition: opacity 0.3s ease;
-            background-color: transparent;
-        }
-
-        .gallery-item:hover .image-number {
-            opacity: 0;
-        }
-    </style>
-    <style>
-        /* USC Architecture Folder Styles */
-        .usc-folders {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0px;
-            margin: 20px 0 0 0;
-        }
-        
-        .usc-folder {
-            background-color: rgba(0, 58, 108, 0.1);
-            border: 1px solid rgba(var(--highlight-color-rgb), 0.1);
-            border-radius: 0px;
-            padding: 10px 15px;
-            cursor: pointer;
-            transition: all 0.3s var(--smooth-ease);
-            font-weight: 500;
-            color: var(--text-color);
-            position: relative;
-            margin: 0;
-            height: 38px;
-            line-height: 18px;
-            box-sizing: border-box;
-        }
-        
-        .usc-folder:hover {
-            background-color: rgba(0, 58, 108, 0.2);
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        }
-        
-        .usc-folder.active {
-            background-color: rgba(0, 58, 108, 0.3);
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            color: #fff;
-        }
-        
-        .usc-folder-content {
-            margin-top: 20px;
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.5s var(--smooth-ease);
-        }
-        
-        .usc-folder-content.active {
-            max-height: 10000px; /* Increased from 2000px to accommodate all 253 images */
-            overflow: visible !important; /* Ensure content isn't cut off */
-        }
-        
-        .usc-gallery-container {
-            display: grid;
-            /* Grid template columns will be set by JavaScript */
-            gap: 0 !important;
-            margin: 20px 0;
-            width: 62.5%;
-            margin-left: 0;
-            margin-right: auto;
-            justify-content: left;
-            max-height: none !important;
-            overflow: visible !important;
-        }
-        
-        .usc-gallery-item {
-            position: relative;
-            width: 100%;
-            padding-bottom: 100%;
-            overflow: hidden;
-            margin: 0 !important;
-            border: none !important;
-            cursor: pointer;
-        }
-        
-        .usc-gallery-item img {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            filter: saturate(0.22);
-            transition: filter 0.3s ease;
-            border: none !important;
-            transform: none !important;
-        }
-        
-        .usc-gallery-item:hover img {
-            filter: saturate(1);
-        }
-        
-        .usc-gallery-item .image-number {
-            position: absolute;
-            bottom: 5px;
-            left: 10px;
-            color: white;
-            font-weight: 500;
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
-            background: none;
-            padding: 0;
-            border-radius: 0;
-            border: none;
-            outline: none !important;
-            box-shadow: none !important;
-        }
-        
-        .usc-gallery-item:hover .image-number {
-            opacity: 0;
-        }
-    </style>
-    <style>
-        /* USC Gallery Styles */
-        .usc-gallery-container {
-            display: grid;
-            grid-template-columns: repeat(5, 1fr) !important;
-            width: 62.5%;
-            gap: 0 !important;
-            margin-top: 20px;
-            margin-bottom: 20px;
-            margin-left: 0;
-            margin-right: auto;
-            justify-content: left;
-            max-height: none !important;
-            overflow: visible !important;
-        }
-        
-        .usc-gallery-item {
-            position: relative;
-            overflow: hidden;
-            width: 100%;
-            height: 0;
-            padding-bottom: 100%;
-            cursor: pointer;
-        }
-        
-        .usc-image-container {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-        }
-        
-        .usc-gallery-image {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-            filter: saturate(0.22);
-            transition: filter 0.3s ease;
-        }
-        
-        .usc-gallery-item:hover .usc-gallery-image {
-            filter: saturate(1);
-        }
-        
-        .usc-gallery-item .image-number {
-            position: absolute;
-            bottom: 10px;
-            right: 10px;
-            background: transparent;
-            color: white;
-            padding: 2px 6px;
-            font-size: 12px;
-            border-radius: 2px;
-            z-index: 2;
-            text-shadow: 0 0 3px rgba(0, 0, 0, 0.8);
-        }
-    </style>
-    <style>
-        .scroll-sentinel {
-            grid-column: 1 / -1;
-            height: 10px;
-            width: 100%;
-            background: transparent;
-        }
-    </style>
-    <style>
-        .media-type-buttons {
-            display: flex;
-            gap: 0px;
-            margin: 0;
-            width: 64.32%; /* 64.64% * 0.995 = 64.32% */
-        }
-        
-        .media-type-button {
-            flex: 1;
-            padding: 10px 0;
-            cursor: pointer;
-            background-color: rgba(0, 58, 108, 0.1); /* Reduced brightness by 50% from rgba(0, 116, 217, 0.1) */
-            border: 1px solid rgba(var(--highlight-color-rgb), 0.1);
-            border-radius: 0px;
-            transition: all 0.3s var(--smooth-ease);
-            font-weight: 500;
-            color: var(--text-color);
-            position: relative;
-            margin: 0;
-            height: 38px;
-            line-height: 18px;
-            box-sizing: border-box;
-        }
-        
-        .media-type-button.jpeg {
-            flex: 6; /* Spans 6 columns (5.5 - 3.0) */
-        }
-        
-        .media-type-button.pdf {
-            flex: 7.023; /* Scaled up by 1/3% from 7 (7 * 1.0033 = 7.023) */
-        }
-        
-        .media-type-button:hover {
-            background-color: rgba(0, 58, 108, 0.2);
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        }
-        
-        .media-type-button.active {
-            background-color: rgba(0, 58, 108, 0.3);
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            color: #fff;
-        }
-        
-        .pdf-view-button.button-302 {
-            width: 34.16%; /* Increased from 32.16% by adding 1% on each side */
-            position: relative;
-            left: -3%; /* Adjusted to -3% as specified */
-            margin-left: 0; /* Reset any margin that might affect positioning */
-            margin-top: 0; /* Remove top margin to touch the PDF button */
-            background-color: rgba(0, 58, 108, 0.1);
-            border: 1px solid rgba(var(--highlight-color-rgb), 0.1);
-            border-radius: 0px;
-            transition: all 0.3s var(--smooth-ease);
-            font-weight: 500;
-            color: var(--text-color);
-            padding: 10px 0;
-            height: 38px; /* Match the exact height of media type buttons */
-            line-height: 18px; /* Center text vertically */
-            box-sizing: border-box; /* Ensure padding doesn't affect height */
-        }
-        
-        .pdf-view-button.button-302:hover {
-            background-color: rgba(0, 58, 108, 0.2);
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        }
-    </style>
-    <style>
-        /* PDF buttons container styles */
-        .pdf-buttons-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin-bottom: 20px;
-            margin-top: 10px; /* Ensure no gap between media type toggle and PDF buttons */
-            width: 100%;
-        }
-        
-        .pdf-view-button {
-            width: 34.16%;
-            position: relative;
-            left: -3%;
-            padding: 10px 0;
-            margin: 0; /* Remove top margin */
-            background-color: rgba(0, 58, 108, 0.1);
-            border: 1px solid rgba(var(--highlight-color-rgb), 0.1);
-            border-radius: 0px;
-            cursor: pointer;
-            transition: all 0.3s var(--smooth-ease);
-            text-align: center;
-            font-size: 14px;
-            font-weight: 500;
-            color: var(--text-color);
-            height: 38px; /* Match the exact height of media type buttons */
-            line-height: 18px; /* Center text vertically */
-            box-sizing: border-box; /* Ensure padding doesn't affect height */
-        }
-        
-        .pdf-view-button:hover {
-            background-color: rgba(0, 58, 108, 0.2);
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        }
-    </style>
-    <style>
-        /* 800 Broadway PDF buttons styling */
-        .broadway-pdf-buttons-container {
+        /* 5959 Yonge Street PDF buttons styling */
+        .yonge5959-pdf-buttons-container {
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -1869,7 +1465,7 @@
             width: 100%;
         }
 
-        .broadway-pdf-view-button {
+        .yonge5959-pdf-view-button {
             width: 100%;
             padding: 10px 0;
             margin: 0;
@@ -1885,443 +1481,7 @@
             box-sizing: border-box;
         }
 
-        .broadway-pdf-view-button:hover {
-            background-color: rgba(0, 58, 108, 0.2);
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        }
-    </style>
-    <style>
-        /* Password input styling */
-        .password-container {
-            display: block;
-            margin: 10px auto;
-            max-width: 300px;
-            text-align: center;
-        }
-        
-        .timeline-password {
-            padding: 8px 12px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 4px;
-            background-color: rgba(0, 0, 0, 0.5);
-            color: white;
-            font-family: 'Roboto Mono', monospace;
-            width: 100%;
-            max-width: 300px;
-            text-align: center;
-            transition: all 0.3s var(--smooth-ease);
-            backdrop-filter: blur(5px);
-            -webkit-backdrop-filter: blur(5px);
-        }
-        
-        .timeline-password:focus {
-            border-color: rgba(0, 116, 217, 0.5);
-            box-shadow: 0 0 0 2px rgba(0, 116, 217, 0.2);
-            outline: none;
-        }
-        
-        .password-container.visible {
-            display: block;
-            animation: fadeIn 0.5s;
-        }
-        
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-        
-        /* Add subtle indicator for password field */
-        .timeline-password::placeholder {
-            color: rgba(255, 255, 255, 0.4);
-            transition: all 0.3s ease;
-        }
-        
-        .timeline-password:focus::placeholder {
-            opacity: 0.7;
-        }
-        
-        /* Improve timeline header appearance */
-        .timeline-header {
-            position: relative;
-            transition: color 0.3s var(--smooth-ease);
-        }
-        
-        .timeline-item.expanded .timeline-header {
-            color: var(--highlight-color);
-        }
-        
-        /* Ensure all galleries maintain 5-column layout */
-        #teslaNorthHollywoodGallery,
-        #gigaAustinGallery,
-        #cybermaskGallery,
-        #uscGallery,
-        .gallery-container {
-            display: grid;
-            grid-template-columns: repeat(5, 1fr) !important;
-            gap: 10px;
-            width: 62.5%;
-        }
-    </style>
-    <style>
-        /* Gallery Container Styles */
-        .gallery-container {
-            display: grid;
-            grid-template-columns: repeat(5, 1fr) !important;
-            gap: 10px;
-            margin: 20px 0;
-            width: 62.5%;
-            margin-left: 0;
-            margin-right: auto;
-            justify-content: left;
-        }
-
-        .gallery-item {
-            position: relative;
-            width: 100%;
-            padding-bottom: 100%;
-            background: var(--background-color);
-            overflow: hidden;
-            margin: 0;
-        }
-
-        .gallery-item img {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            filter: saturate(0.22);
-            transition: filter 0.3s ease;
-        }
-
-        .gallery-item:hover img {
-            filter: saturate(1);
-        }
-
-        .gallery-item .image-number {
-            position: absolute;
-            bottom: 5px;
-            right: 10px;
-            color: black;
-            padding: 2px 8px;
-            border-radius: 10px;
-            font-size: 12px;
-            opacity: 1;
-            transition: opacity 0.3s ease;
-            background-color: transparent;
-        }
-
-        .gallery-item:hover .image-number {
-            opacity: 0;
-        }
-    </style>
-    <style>
-        /* USC Architecture Folder Styles */
-        .usc-folders {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0px;
-            margin: 20px 0 0 0;
-        }
-        
-        .usc-folder {
-            background-color: rgba(0, 58, 108, 0.1);
-            border: 1px solid rgba(var(--highlight-color-rgb), 0.1);
-            border-radius: 0px;
-            padding: 10px 15px;
-            cursor: pointer;
-            transition: all 0.3s var(--smooth-ease);
-            font-weight: 500;
-            color: var(--text-color);
-            position: relative;
-            margin: 0;
-            height: 38px;
-            line-height: 18px;
-            box-sizing: border-box;
-        }
-        
-        .usc-folder:hover {
-            background-color: rgba(0, 58, 108, 0.2);
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        }
-        
-        .usc-folder.active {
-            background-color: rgba(0, 58, 108, 0.3);
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            color: #fff;
-        }
-        
-        .usc-folder-content {
-            margin-top: 20px;
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.5s var(--smooth-ease);
-        }
-        
-        .usc-folder-content.active {
-            max-height: 10000px; /* Increased from 2000px to accommodate all 253 images */
-            overflow: visible !important; /* Ensure content isn't cut off */
-        }
-        
-        .usc-gallery-container {
-            display: grid;
-            /* Grid template columns will be set by JavaScript */
-            gap: 0 !important;
-            margin: 20px 0;
-            width: 62.5%;
-            margin-left: 0;
-            margin-right: auto;
-            justify-content: left;
-            max-height: none !important;
-            overflow: visible !important;
-        }
-        
-        .usc-gallery-item {
-            position: relative;
-            width: 100%;
-            padding-bottom: 100%;
-            overflow: hidden;
-            margin: 0 !important;
-            border: none !important;
-            cursor: pointer;
-        }
-        
-        .usc-gallery-item img {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            filter: saturate(0.22);
-            transition: filter 0.3s ease;
-            border: none !important;
-            transform: none !important;
-        }
-        
-        .usc-gallery-item:hover img {
-            filter: saturate(1);
-        }
-        
-        .usc-gallery-item .image-number {
-            position: absolute;
-            bottom: 5px;
-            left: 10px;
-            color: white;
-            font-weight: 500;
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
-            background: none;
-            padding: 0;
-            border-radius: 0;
-            border: none;
-            outline: none !important;
-            box-shadow: none !important;
-        }
-        
-        .usc-gallery-item:hover .image-number {
-            opacity: 0;
-        }
-    </style>
-    <style>
-        /* USC Gallery Styles */
-        .usc-gallery-container {
-            display: grid;
-            grid-template-columns: repeat(5, 1fr) !important;
-            width: 62.5%;
-            gap: 0 !important;
-            margin-top: 20px;
-            margin-bottom: 20px;
-            margin-left: 0;
-            margin-right: auto;
-            justify-content: left;
-            max-height: none !important;
-            overflow: visible !important;
-        }
-        
-        .usc-gallery-item {
-            position: relative;
-            overflow: hidden;
-            width: 100%;
-            height: 0;
-            padding-bottom: 100%;
-            cursor: pointer;
-        }
-        
-        .usc-image-container {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-        }
-        
-        .usc-gallery-image {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-            filter: saturate(0.22);
-            transition: filter 0.3s ease;
-        }
-        
-        .usc-gallery-item:hover .usc-gallery-image {
-            filter: saturate(1);
-        }
-        
-        .usc-gallery-item .image-number {
-            position: absolute;
-            bottom: 10px;
-            right: 10px;
-            background: transparent;
-            color: white;
-            padding: 2px 6px;
-            font-size: 12px;
-            border-radius: 2px;
-            z-index: 2;
-            text-shadow: 0 0 3px rgba(0, 0, 0, 0.8);
-        }
-    </style>
-    <style>
-        .scroll-sentinel {
-            grid-column: 1 / -1;
-            height: 10px;
-            width: 100%;
-            background: transparent;
-        }
-    </style>
-    <style>
-        .media-type-buttons {
-            display: flex;
-            gap: 0px;
-            margin: 0;
-            width: 64.32%; /* 64.64% * 0.995 = 64.32% */
-        }
-        
-        .media-type-button {
-            flex: 1;
-            padding: 10px 0;
-            cursor: pointer;
-            background-color: rgba(0, 58, 108, 0.1); /* Reduced brightness by 50% from rgba(0, 116, 217, 0.1) */
-            border: 1px solid rgba(var(--highlight-color-rgb), 0.1);
-            border-radius: 0px;
-            transition: all 0.3s var(--smooth-ease);
-            font-weight: 500;
-            color: var(--text-color);
-            position: relative;
-            margin: 0;
-            height: 38px;
-            line-height: 18px;
-            box-sizing: border-box;
-        }
-        
-        .media-type-button.jpeg {
-            flex: 6; /* Spans 6 columns (5.5 - 3.0) */
-        }
-        
-        .media-type-button.pdf {
-            flex: 7.023; /* Scaled up by 1/3% from 7 (7 * 1.0033 = 7.023) */
-        }
-        
-        .media-type-button:hover {
-            background-color: rgba(0, 58, 108, 0.2);
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        }
-        
-        .media-type-button.active {
-            background-color: rgba(0, 58, 108, 0.3);
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            color: #fff;
-        }
-        
-        .pdf-view-button.button-302 {
-            width: 34.16%; /* Increased from 32.16% by adding 1% on each side */
-            position: relative;
-            left: -3%; /* Adjusted to -3% as specified */
-            margin-left: 0; /* Reset any margin that might affect positioning */
-            margin-top: 0; /* Remove top margin to touch the PDF button */
-            background-color: rgba(0, 58, 108, 0.1);
-            border: 1px solid rgba(var(--highlight-color-rgb), 0.1);
-            border-radius: 0px;
-            transition: all 0.3s var(--smooth-ease);
-            font-weight: 500;
-            color: var(--text-color);
-            padding: 10px 0;
-            height: 38px; /* Match the exact height of media type buttons */
-            line-height: 18px; /* Center text vertically */
-            box-sizing: border-box; /* Ensure padding doesn't affect height */
-        }
-        
-        .pdf-view-button.button-302:hover {
-            background-color: rgba(0, 58, 108, 0.2);
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        }
-    </style>
-    <style>
-        /* PDF buttons container styles */
-        .pdf-buttons-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin-bottom: 20px;
-            margin-top: 10px; /* Ensure no gap between media type toggle and PDF buttons */
-            width: 100%;
-        }
-        
-        .pdf-view-button {
-            width: 34.16%;
-            position: relative;
-            left: -3%;
-            padding: 10px 0;
-            margin: 0; /* Remove top margin */
-            background-color: rgba(0, 58, 108, 0.1);
-            border: 1px solid rgba(var(--highlight-color-rgb), 0.1);
-            border-radius: 0px;
-            cursor: pointer;
-            transition: all 0.3s var(--smooth-ease);
-            text-align: center;
-            font-size: 14px;
-            font-weight: 500;
-            color: var(--text-color);
-            height: 38px; /* Match the exact height of media type buttons */
-            line-height: 18px; /* Center text vertically */
-            box-sizing: border-box; /* Ensure padding doesn't affect height */
-        }
-        
-        .pdf-view-button:hover {
-            background-color: rgba(0, 58, 108, 0.2);
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        }
-    </style>
-    <style>
-        /* 800 Broadway PDF buttons styling */
-        .broadway-pdf-buttons-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin-bottom: 20px;
-            margin-top: 10px;
-            width: 100%;
-        }
-
-        .broadway-pdf-view-button {
-            width: 100%;
-            padding: 10px 0;
-            margin: 0;
-            background-color: rgba(0, 58, 108, 0.1);
-            border: 1px solid rgba(var(--highlight-color-rgb), 0.1);
-            border-radius: 0px;
-            cursor: pointer;
-            transition: all 0.3s var(--smooth-ease);
-            text-align: center;
-            color: var(--text-color);
-            text-decoration: none;
-            display: block;
-            box-sizing: border-box;
-        }
-
-        .broadway-pdf-view-button:hover {
+        .yonge5959-pdf-view-button:hover {
             background-color: rgba(0, 58, 108, 0.2);
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
@@ -2763,6 +1923,38 @@
         }
     </style>
     <style>
+        /* 5959 Yonge Street PDF buttons styling */
+        .yonge5959-pdf-buttons-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 20px;
+            margin-top: 10px;
+            width: 100%;
+        }
+
+        .yonge5959-pdf-view-button {
+            width: 100%;
+            padding: 10px 0;
+            margin: 0;
+            background-color: rgba(0, 58, 108, 0.1);
+            border: 1px solid rgba(var(--highlight-color-rgb), 0.1);
+            border-radius: 0px;
+            cursor: pointer;
+            transition: all 0.3s var(--smooth-ease);
+            text-align: center;
+            color: var(--text-color);
+            text-decoration: none;
+            display: block;
+            box-sizing: border-box;
+        }
+
+        .yonge5959-pdf-view-button:hover {
+            background-color: rgba(0, 58, 108, 0.2);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+    <style>
         /* Password input styling */
         .password-container {
             display: block;
@@ -3199,6 +2391,38 @@
         }
     </style>
     <style>
+        /* 5959 Yonge Street PDF buttons styling */
+        .yonge5959-pdf-buttons-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 20px;
+            margin-top: 10px;
+            width: 100%;
+        }
+
+        .yonge5959-pdf-view-button {
+            width: 100%;
+            padding: 10px 0;
+            margin: 0;
+            background-color: rgba(0, 58, 108, 0.1);
+            border: 1px solid rgba(var(--highlight-color-rgb), 0.1);
+            border-radius: 0px;
+            cursor: pointer;
+            transition: all 0.3s var(--smooth-ease);
+            text-align: center;
+            color: var(--text-color);
+            text-decoration: none;
+            display: block;
+            box-sizing: border-box;
+        }
+
+        .yonge5959-pdf-view-button:hover {
+            background-color: rgba(0, 58, 108, 0.2);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+    <style>
         /* Password input styling */
         .password-container {
             display: block;
@@ -3635,6 +2859,38 @@
         }
     </style>
     <style>
+        /* 5959 Yonge Street PDF buttons styling */
+        .yonge5959-pdf-buttons-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 20px;
+            margin-top: 10px;
+            width: 100%;
+        }
+
+        .yonge5959-pdf-view-button {
+            width: 100%;
+            padding: 10px 0;
+            margin: 0;
+            background-color: rgba(0, 58, 108, 0.1);
+            border: 1px solid rgba(var(--highlight-color-rgb), 0.1);
+            border-radius: 0px;
+            cursor: pointer;
+            transition: all 0.3s var(--smooth-ease);
+            text-align: center;
+            color: var(--text-color);
+            text-decoration: none;
+            display: block;
+            box-sizing: border-box;
+        }
+
+        .yonge5959-pdf-view-button:hover {
+            background-color: rgba(0, 58, 108, 0.2);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+    <style>
         /* Password input styling */
         .password-container {
             display: block;
@@ -4066,6 +3322,974 @@
         }
 
         .broadway-pdf-view-button:hover {
+            background-color: rgba(0, 58, 108, 0.2);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+    <style>
+        /* 5959 Yonge Street PDF buttons styling */
+        .yonge5959-pdf-buttons-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 20px;
+            margin-top: 10px;
+            width: 100%;
+        }
+
+        .yonge5959-pdf-view-button {
+            width: 100%;
+            padding: 10px 0;
+            margin: 0;
+            background-color: rgba(0, 58, 108, 0.1);
+            border: 1px solid rgba(var(--highlight-color-rgb), 0.1);
+            border-radius: 0px;
+            cursor: pointer;
+            transition: all 0.3s var(--smooth-ease);
+            text-align: center;
+            color: var(--text-color);
+            text-decoration: none;
+            display: block;
+            box-sizing: border-box;
+        }
+
+        .yonge5959-pdf-view-button:hover {
+            background-color: rgba(0, 58, 108, 0.2);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+    <style>
+        /* Password input styling */
+        .password-container {
+            display: block;
+            margin: 10px auto;
+            max-width: 300px;
+            text-align: center;
+        }
+        
+        .timeline-password {
+            padding: 8px 12px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            font-family: 'Roboto Mono', monospace;
+            width: 100%;
+            max-width: 300px;
+            text-align: center;
+            transition: all 0.3s var(--smooth-ease);
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+        }
+        
+        .timeline-password:focus {
+            border-color: rgba(0, 116, 217, 0.5);
+            box-shadow: 0 0 0 2px rgba(0, 116, 217, 0.2);
+            outline: none;
+        }
+        
+        .password-container.visible {
+            display: block;
+            animation: fadeIn 0.5s;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        /* Add subtle indicator for password field */
+        .timeline-password::placeholder {
+            color: rgba(255, 255, 255, 0.4);
+            transition: all 0.3s ease;
+        }
+        
+        .timeline-password:focus::placeholder {
+            opacity: 0.7;
+        }
+        
+        /* Improve timeline header appearance */
+        .timeline-header {
+            position: relative;
+            transition: color 0.3s var(--smooth-ease);
+        }
+        
+        .timeline-item.expanded .timeline-header {
+            color: var(--highlight-color);
+        }
+        
+        /* Ensure all galleries maintain 5-column layout */
+        #teslaNorthHollywoodGallery,
+        #gigaAustinGallery,
+        #cybermaskGallery,
+        #uscGallery,
+        .gallery-container {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr) !important;
+            gap: 10px;
+            width: 62.5%;
+        }
+    </style>
+    <style>
+        /* Gallery Container Styles */
+        .gallery-container {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr) !important;
+            gap: 10px;
+            margin: 20px 0;
+            width: 62.5%;
+            margin-left: 0;
+            margin-right: auto;
+            justify-content: left;
+        }
+
+        .gallery-item {
+            position: relative;
+            width: 100%;
+            padding-bottom: 100%;
+            background: var(--background-color);
+            overflow: hidden;
+            margin: 0;
+        }
+
+        .gallery-item img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: saturate(0.22);
+            transition: filter 0.3s ease;
+        }
+
+        .gallery-item:hover img {
+            filter: saturate(1);
+        }
+
+        .gallery-item .image-number {
+            position: absolute;
+            bottom: 5px;
+            right: 10px;
+            color: black;
+            padding: 2px 8px;
+            border-radius: 10px;
+            font-size: 12px;
+            opacity: 1;
+            transition: opacity 0.3s ease;
+            background-color: transparent;
+        }
+
+        .gallery-item:hover .image-number {
+            opacity: 0;
+        }
+    </style>
+    <style>
+        /* USC Architecture Folder Styles */
+        .usc-folders {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0px;
+            margin: 20px 0 0 0;
+        }
+        
+        .usc-folder {
+            background-color: rgba(0, 58, 108, 0.1);
+            border: 1px solid rgba(var(--highlight-color-rgb), 0.1);
+            border-radius: 0px;
+            padding: 10px 15px;
+            cursor: pointer;
+            transition: all 0.3s var(--smooth-ease);
+            font-weight: 500;
+            color: var(--text-color);
+            position: relative;
+            margin: 0;
+            height: 38px;
+            line-height: 18px;
+            box-sizing: border-box;
+        }
+        
+        .usc-folder:hover {
+            background-color: rgba(0, 58, 108, 0.2);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        
+        .usc-folder.active {
+            background-color: rgba(0, 58, 108, 0.3);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            color: #fff;
+        }
+        
+        .usc-folder-content {
+            margin-top: 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s var(--smooth-ease);
+        }
+        
+        .usc-folder-content.active {
+            max-height: 10000px; /* Increased from 2000px to accommodate all 253 images */
+            overflow: visible !important; /* Ensure content isn't cut off */
+        }
+        
+        .usc-gallery-container {
+            display: grid;
+            /* Grid template columns will be set by JavaScript */
+            gap: 0 !important;
+            margin: 20px 0;
+            width: 62.5%;
+            margin-left: 0;
+            margin-right: auto;
+            justify-content: left;
+            max-height: none !important;
+            overflow: visible !important;
+        }
+        
+        .usc-gallery-item {
+            position: relative;
+            width: 100%;
+            padding-bottom: 100%;
+            overflow: hidden;
+            margin: 0 !important;
+            border: none !important;
+            cursor: pointer;
+        }
+        
+        .usc-gallery-item img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: saturate(0.22);
+            transition: filter 0.3s ease;
+            border: none !important;
+            transform: none !important;
+        }
+        
+        .usc-gallery-item:hover img {
+            filter: saturate(1);
+        }
+        
+        .usc-gallery-item .image-number {
+            position: absolute;
+            bottom: 5px;
+            left: 10px;
+            color: white;
+            font-weight: 500;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+            background: none;
+            padding: 0;
+            border-radius: 0;
+            border: none;
+            outline: none !important;
+            box-shadow: none !important;
+        }
+        
+        .usc-gallery-item:hover .image-number {
+            opacity: 0;
+        }
+    </style>
+    <style>
+        /* USC Gallery Styles */
+        .usc-gallery-container {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr) !important;
+            width: 62.5%;
+            gap: 0 !important;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            margin-left: 0;
+            margin-right: auto;
+            justify-content: left;
+            max-height: none !important;
+            overflow: visible !important;
+        }
+        
+        .usc-gallery-item {
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            height: 0;
+            padding-bottom: 100%;
+            cursor: pointer;
+        }
+        
+        .usc-image-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+        
+        .usc-gallery-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            filter: saturate(0.22);
+            transition: filter 0.3s ease;
+        }
+        
+        .usc-gallery-item:hover .usc-gallery-image {
+            filter: saturate(1);
+        }
+        
+        .usc-gallery-item .image-number {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background: transparent;
+            color: white;
+            padding: 2px 6px;
+            font-size: 12px;
+            border-radius: 2px;
+            z-index: 2;
+            text-shadow: 0 0 3px rgba(0, 0, 0, 0.8);
+        }
+    </style>
+    <style>
+        .scroll-sentinel {
+            grid-column: 1 / -1;
+            height: 10px;
+            width: 100%;
+            background: transparent;
+        }
+    </style>
+    <style>
+        .media-type-buttons {
+            display: flex;
+            gap: 0px;
+            margin: 0;
+            width: 64.32%; /* 64.64% * 0.995 = 64.32% */
+        }
+        
+        .media-type-button {
+            flex: 1;
+            padding: 10px 0;
+            cursor: pointer;
+            background-color: rgba(0, 58, 108, 0.1); /* Reduced brightness by 50% from rgba(0, 116, 217, 0.1) */
+            border: 1px solid rgba(var(--highlight-color-rgb), 0.1);
+            border-radius: 0px;
+            transition: all 0.3s var(--smooth-ease);
+            font-weight: 500;
+            color: var(--text-color);
+            position: relative;
+            margin: 0;
+            height: 38px;
+            line-height: 18px;
+            box-sizing: border-box;
+        }
+        
+        .media-type-button.jpeg {
+            flex: 6; /* Spans 6 columns (5.5 - 3.0) */
+        }
+        
+        .media-type-button.pdf {
+            flex: 7.023; /* Scaled up by 1/3% from 7 (7 * 1.0033 = 7.023) */
+        }
+        
+        .media-type-button:hover {
+            background-color: rgba(0, 58, 108, 0.2);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        
+        .media-type-button.active {
+            background-color: rgba(0, 58, 108, 0.3);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            color: #fff;
+        }
+        
+        .pdf-view-button.button-302 {
+            width: 34.16%; /* Increased from 32.16% by adding 1% on each side */
+            position: relative;
+            left: -3%; /* Adjusted to -3% as specified */
+            margin-left: 0; /* Reset any margin that might affect positioning */
+            margin-top: 0; /* Remove top margin to touch the PDF button */
+            background-color: rgba(0, 58, 108, 0.1);
+            border: 1px solid rgba(var(--highlight-color-rgb), 0.1);
+            border-radius: 0px;
+            transition: all 0.3s var(--smooth-ease);
+            font-weight: 500;
+            color: var(--text-color);
+            padding: 10px 0;
+            height: 38px; /* Match the exact height of media type buttons */
+            line-height: 18px; /* Center text vertically */
+            box-sizing: border-box; /* Ensure padding doesn't affect height */
+        }
+        
+        .pdf-view-button.button-302:hover {
+            background-color: rgba(0, 58, 108, 0.2);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+    <style>
+        /* PDF buttons container styles */
+        .pdf-buttons-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 20px;
+            margin-top: 10px; /* Ensure no gap between media type toggle and PDF buttons */
+            width: 100%;
+        }
+        
+        .pdf-view-button {
+            width: 34.16%;
+            position: relative;
+            left: -3%;
+            padding: 10px 0;
+            margin: 0; /* Remove top margin */
+            background-color: rgba(0, 58, 108, 0.1);
+            border: 1px solid rgba(var(--highlight-color-rgb), 0.1);
+            border-radius: 0px;
+            cursor: pointer;
+            transition: all 0.3s var(--smooth-ease);
+            text-align: center;
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--text-color);
+            height: 38px; /* Match the exact height of media type buttons */
+            line-height: 18px; /* Center text vertically */
+            box-sizing: border-box; /* Ensure padding doesn't affect height */
+        }
+        
+        .pdf-view-button:hover {
+            background-color: rgba(0, 58, 108, 0.2);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+    <style>
+        /* 800 Broadway PDF buttons styling */
+        .broadway-pdf-buttons-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 20px;
+            margin-top: 10px;
+            width: 100%;
+        }
+
+        .broadway-pdf-view-button {
+            width: 100%;
+            padding: 10px 0;
+            margin: 0;
+            background-color: rgba(0, 58, 108, 0.1);
+            border: 1px solid rgba(var(--highlight-color-rgb), 0.1);
+            border-radius: 0px;
+            cursor: pointer;
+            transition: all 0.3s var(--smooth-ease);
+            text-align: center;
+            color: var(--text-color);
+            text-decoration: none;
+            display: block;
+            box-sizing: border-box;
+        }
+
+        .broadway-pdf-view-button:hover {
+            background-color: rgba(0, 58, 108, 0.2);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+    <style>
+        /* 5959 Yonge Street PDF buttons styling */
+        .yonge5959-pdf-buttons-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 20px;
+            margin-top: 10px;
+            width: 100%;
+        }
+
+        .yonge5959-pdf-view-button {
+            width: 100%;
+            padding: 10px 0;
+            margin: 0;
+            background-color: rgba(0, 58, 108, 0.1);
+            border: 1px solid rgba(var(--highlight-color-rgb), 0.1);
+            border-radius: 0px;
+            cursor: pointer;
+            transition: all 0.3s var(--smooth-ease);
+            text-align: center;
+            color: var(--text-color);
+            text-decoration: none;
+            display: block;
+            box-sizing: border-box;
+        }
+
+        .yonge5959-pdf-view-button:hover {
+            background-color: rgba(0, 58, 108, 0.2);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+    <style>
+        /* Password input styling */
+        .password-container {
+            display: block;
+            margin: 10px auto;
+            max-width: 300px;
+            text-align: center;
+        }
+        
+        .timeline-password {
+            padding: 8px 12px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            font-family: 'Roboto Mono', monospace;
+            width: 100%;
+            max-width: 300px;
+            text-align: center;
+            transition: all 0.3s var(--smooth-ease);
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+        }
+        
+        .timeline-password:focus {
+            border-color: rgba(0, 116, 217, 0.5);
+            box-shadow: 0 0 0 2px rgba(0, 116, 217, 0.2);
+            outline: none;
+        }
+        
+        .password-container.visible {
+            display: block;
+            animation: fadeIn 0.5s;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        /* Add subtle indicator for password field */
+        .timeline-password::placeholder {
+            color: rgba(255, 255, 255, 0.4);
+            transition: all 0.3s ease;
+        }
+        
+        .timeline-password:focus::placeholder {
+            opacity: 0.7;
+        }
+        
+        /* Improve timeline header appearance */
+        .timeline-header {
+            position: relative;
+            transition: color 0.3s var(--smooth-ease);
+        }
+        
+        .timeline-item.expanded .timeline-header {
+            color: var(--highlight-color);
+        }
+        
+        /* Ensure all galleries maintain 5-column layout */
+        #teslaNorthHollywoodGallery,
+        #gigaAustinGallery,
+        #cybermaskGallery,
+        #uscGallery,
+        .gallery-container {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr) !important;
+            gap: 10px;
+            width: 62.5%;
+        }
+    </style>
+    <style>
+        /* Gallery Container Styles */
+        .gallery-container {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr) !important;
+            gap: 10px;
+            margin: 20px 0;
+            width: 62.5%;
+            margin-left: 0;
+            margin-right: auto;
+            justify-content: left;
+        }
+
+        .gallery-item {
+            position: relative;
+            width: 100%;
+            padding-bottom: 100%;
+            background: var(--background-color);
+            overflow: hidden;
+            margin: 0;
+        }
+
+        .gallery-item img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: saturate(0.22);
+            transition: filter 0.3s ease;
+        }
+
+        .gallery-item:hover img {
+            filter: saturate(1);
+        }
+
+        .gallery-item .image-number {
+            position: absolute;
+            bottom: 5px;
+            right: 10px;
+            color: black;
+            padding: 2px 8px;
+            border-radius: 10px;
+            font-size: 12px;
+            opacity: 1;
+            transition: opacity 0.3s ease;
+            background-color: transparent;
+        }
+
+        .gallery-item:hover .image-number {
+            opacity: 0;
+        }
+    </style>
+    <style>
+        /* USC Architecture Folder Styles */
+        .usc-folders {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0px;
+            margin: 20px 0 0 0;
+        }
+        
+        .usc-folder {
+            background-color: rgba(0, 58, 108, 0.1);
+            border: 1px solid rgba(var(--highlight-color-rgb), 0.1);
+            border-radius: 0px;
+            padding: 10px 15px;
+            cursor: pointer;
+            transition: all 0.3s var(--smooth-ease);
+            font-weight: 500;
+            color: var(--text-color);
+            position: relative;
+            margin: 0;
+            height: 38px;
+            line-height: 18px;
+            box-sizing: border-box;
+        }
+        
+        .usc-folder:hover {
+            background-color: rgba(0, 58, 108, 0.2);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        
+        .usc-folder.active {
+            background-color: rgba(0, 58, 108, 0.3);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            color: #fff;
+        }
+        
+        .usc-folder-content {
+            margin-top: 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s var(--smooth-ease);
+        }
+        
+        .usc-folder-content.active {
+            max-height: 10000px; /* Increased from 2000px to accommodate all 253 images */
+            overflow: visible !important; /* Ensure content isn't cut off */
+        }
+        
+        .usc-gallery-container {
+            display: grid;
+            /* Grid template columns will be set by JavaScript */
+            gap: 0 !important;
+            margin: 20px 0;
+            width: 62.5%;
+            margin-left: 0;
+            margin-right: auto;
+            justify-content: left;
+            max-height: none !important;
+            overflow: visible !important;
+        }
+        
+        .usc-gallery-item {
+            position: relative;
+            width: 100%;
+            padding-bottom: 100%;
+            overflow: hidden;
+            margin: 0 !important;
+            border: none !important;
+            cursor: pointer;
+        }
+        
+        .usc-gallery-item img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: saturate(0.22);
+            transition: filter 0.3s ease;
+            border: none !important;
+            transform: none !important;
+        }
+        
+        .usc-gallery-item:hover img {
+            filter: saturate(1);
+        }
+        
+        .usc-gallery-item .image-number {
+            position: absolute;
+            bottom: 5px;
+            left: 10px;
+            color: white;
+            font-weight: 500;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+            background: none;
+            padding: 0;
+            border-radius: 0;
+            border: none;
+            outline: none !important;
+            box-shadow: none !important;
+        }
+        
+        .usc-gallery-item:hover .image-number {
+            opacity: 0;
+        }
+    </style>
+    <style>
+        /* USC Gallery Styles */
+        .usc-gallery-container {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr) !important;
+            width: 62.5%;
+            gap: 0 !important;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            margin-left: 0;
+            margin-right: auto;
+            justify-content: left;
+            max-height: none !important;
+            overflow: visible !important;
+        }
+        
+        .usc-gallery-item {
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            height: 0;
+            padding-bottom: 100%;
+            cursor: pointer;
+        }
+        
+        .usc-image-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+        
+        .usc-gallery-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            filter: saturate(0.22);
+            transition: filter 0.3s ease;
+        }
+        
+        .usc-gallery-item:hover .usc-gallery-image {
+            filter: saturate(1);
+        }
+        
+        .usc-gallery-item .image-number {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background: transparent;
+            color: white;
+            padding: 2px 6px;
+            font-size: 12px;
+            border-radius: 2px;
+            z-index: 2;
+            text-shadow: 0 0 3px rgba(0, 0, 0, 0.8);
+        }
+    </style>
+    <style>
+        .scroll-sentinel {
+            grid-column: 1 / -1;
+            height: 10px;
+            width: 100%;
+            background: transparent;
+        }
+    </style>
+    <style>
+        .media-type-buttons {
+            display: flex;
+            gap: 0px;
+            margin: 0;
+            width: 64.32%; /* 64.64% * 0.995 = 64.32% */
+        }
+        
+        .media-type-button {
+            flex: 1;
+            padding: 10px 0;
+            cursor: pointer;
+            background-color: rgba(0, 58, 108, 0.1); /* Reduced brightness by 50% from rgba(0, 116, 217, 0.1) */
+            border: 1px solid rgba(var(--highlight-color-rgb), 0.1);
+            border-radius: 0px;
+            transition: all 0.3s var(--smooth-ease);
+            font-weight: 500;
+            color: var(--text-color);
+            position: relative;
+            margin: 0;
+            height: 38px;
+            line-height: 18px;
+            box-sizing: border-box;
+        }
+        
+        .media-type-button.jpeg {
+            flex: 6; /* Spans 6 columns (5.5 - 3.0) */
+        }
+        
+        .media-type-button.pdf {
+            flex: 7.023; /* Scaled up by 1/3% from 7 (7 * 1.0033 = 7.023) */
+        }
+        
+        .media-type-button:hover {
+            background-color: rgba(0, 58, 108, 0.2);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        
+        .media-type-button.active {
+            background-color: rgba(0, 58, 108, 0.3);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            color: #fff;
+        }
+        
+        .pdf-view-button.button-302 {
+            width: 34.16%; /* Increased from 32.16% by adding 1% on each side */
+            position: relative;
+            left: -3%; /* Adjusted to -3% as specified */
+            margin-left: 0; /* Reset any margin that might affect positioning */
+            margin-top: 0; /* Remove top margin to touch the PDF button */
+            background-color: rgba(0, 58, 108, 0.1);
+            border: 1px solid rgba(var(--highlight-color-rgb), 0.1);
+            border-radius: 0px;
+            transition: all 0.3s var(--smooth-ease);
+            font-weight: 500;
+            color: var(--text-color);
+            padding: 10px 0;
+            height: 38px; /* Match the exact height of media type buttons */
+            line-height: 18px; /* Center text vertically */
+            box-sizing: border-box; /* Ensure padding doesn't affect height */
+        }
+        
+        .pdf-view-button.button-302:hover {
+            background-color: rgba(0, 58, 108, 0.2);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+    <style>
+        /* PDF buttons container styles */
+        .pdf-buttons-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 20px;
+            margin-top: 10px; /* Ensure no gap between media type toggle and PDF buttons */
+            width: 100%;
+        }
+        
+        .pdf-view-button {
+            width: 34.16%;
+            position: relative;
+            left: -3%;
+            padding: 10px 0;
+            margin: 0; /* Remove top margin */
+            background-color: rgba(0, 58, 108, 0.1);
+            border: 1px solid rgba(var(--highlight-color-rgb), 0.1);
+            border-radius: 0px;
+            cursor: pointer;
+            transition: all 0.3s var(--smooth-ease);
+            text-align: center;
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--text-color);
+            height: 38px; /* Match the exact height of media type buttons */
+            line-height: 18px; /* Center text vertically */
+            box-sizing: border-box; /* Ensure padding doesn't affect height */
+        }
+        
+        .pdf-view-button:hover {
+            background-color: rgba(0, 58, 108, 0.2);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+    <style>
+        /* 800 Broadway PDF buttons styling */
+        .broadway-pdf-buttons-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 20px;
+            margin-top: 10px;
+            width: 100%;
+        }
+
+        .broadway-pdf-view-button {
+            width: 100%;
+            padding: 10px 0;
+            margin: 0;
+            background-color: rgba(0, 58, 108, 0.1);
+            border: 1px solid rgba(var(--highlight-color-rgb), 0.1);
+            border-radius: 0px;
+            cursor: pointer;
+            transition: all 0.3s var(--smooth-ease);
+            text-align: center;
+            color: var(--text-color);
+            text-decoration: none;
+            display: block;
+            box-sizing: border-box;
+        }
+
+        .broadway-pdf-view-button:hover {
+            background-color: rgba(0, 58, 108, 0.2);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+    <style>
+        /* 5959 Yonge Street PDF buttons styling */
+        .yonge5959-pdf-buttons-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 20px;
+            margin-top: 10px;
+            width: 100%;
+        }
+
+        .yonge5959-pdf-view-button {
+            width: 100%;
+            padding: 10px 0;
+            margin: 0;
+            background-color: rgba(0, 58, 108, 0.1);
+            border: 1px solid rgba(var(--highlight-color-rgb), 0.1);
+            border-radius: 0px;
+            cursor: pointer;
+            transition: all 0.3s var(--smooth-ease);
+            text-align: center;
+            color: var(--text-color);
+            text-decoration: none;
+            display: block;
+            box-sizing: border-box;
+        }
+
+        .yonge5959-pdf-view-button:hover {
             background-color: rgba(0, 58, 108, 0.2);
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
@@ -4339,6 +4563,15 @@
                     <p class="timeline-age">29-33</p>
                     <div class="expandable">
                         <p>Lead Architectural Designer for Ghods Builders Inc. on 5959 Yonge Street, an innovative luxury condominium development featuring twin towers of 43 and 31 storeys in North York, Toronto. Coordinated with Kirkor Architects from conceptual design through project delivery, overseeing the integration of over 40,000 sq.ft. of world-class amenities including the industry-first multi-purpose LED sports court, 10-pin bowling alley, rooftop terraces, and the signature Sky Atrium providing panoramic Yonge Street vistas.</p>
+                        <div class="media-type-buttons">
+                            <div class="media-type-button jpg active" onclick="toggleYonge5959MediaType(event, 'jpg')" data-media-type="jpg">JPG</div>
+                            <div class="media-type-button pdf" onclick="toggleYonge5959MediaType(event, 'pdf')" data-media-type="pdf">PDF</div>
+                        </div>
+                        <div class="yonge5959-pdf-buttons-container">
+                            <a href="https://saeedghods-portfolio-assets.s3.us-east-2.amazonaws.com/assets/keyprojects/SAEED+GHODS+PROFESSIONAL+5959+YONGE+ST+PLANS+HIGHRISE.PDF" target="_blank" class="yonge5959-pdf-view-button">
+                                View 5959 Yonge Street Condo Plans PDF
+                            </a>
+                        </div>
                         <div id="yonge5959Gallery" class="gallery-container"></div>
                     </div>
                 </div>
@@ -5429,6 +5662,16 @@
                 if (mediaType === 'pdf') {
                     // Open the PDF in a new tab
                     window.open('https://saeedghods-portfolio-assets.s3.us-east-2.amazonaws.com/assets/keyprojects/SAEED+GHODS+PROFESSIONAL+800+BROADWAY.PDF', '_blank');
+                }
+            }
+
+            // 5959 Yonge Street PDF toggle function
+            function toggleYonge5959MediaType(event, mediaType) {
+                event.stopPropagation();
+
+                if (mediaType === 'pdf') {
+                    // Open the PDF in a new tab
+                    window.open('https://saeedghods-portfolio-assets.s3.us-east-2.amazonaws.com/assets/keyprojects/SAEED+GHODS+PROFESSIONAL+5959+YONGE+ST+PLANS+HIGHRISE.PDF', '_blank');
                 }
             }
         </script>
