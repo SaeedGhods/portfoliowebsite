@@ -5,8 +5,16 @@
 
 // Define the 5959 Yonge Street gallery images
 const yonge5959Images = [
-    'https://saeedghods-portfolio-assets.s3.us-east-2.amazonaws.com/assets/realestate/JPEG/29hp/01.jpg', // Using existing condo images as placeholder
-    'https://saeedghods-portfolio-assets.s3.us-east-2.amazonaws.com/assets/realestate/JPEG/29hp/02.jpg'
+    getAssetUrl('yonge5959/Screenshot 2025-07-25 at 12.11.27 PM.png'), // High-quality rendering 1
+    getAssetUrl('yonge5959/Screenshot 2025-07-25 at 12.11.46 PM.png'), // High-quality rendering 2
+    getAssetUrl('yonge5959/Screenshot 2025-07-25 at 12.11.54 PM.png'), // High-quality rendering 3
+    getAssetUrl('yonge5959/Screenshot 2025-07-25 at 12.12.02 PM.png'), // High-quality rendering 4
+    getAssetUrl('yonge5959/Screenshot 2025-07-25 at 12.12.22 PM.png'), // High-quality rendering 5
+    getAssetUrl('yonge5959/Screenshot 2025-07-25 at 12.12.29 PM.png'), // High-quality rendering 6
+    getAssetUrl('yonge5959/Screenshot 2025-07-25 at 12.12.49 PM.png'), // High-quality rendering 7
+    getAssetUrl('yonge5959/Screenshot 2025-07-25 at 12.12.57 PM.png'), // High-quality rendering 8
+    getAssetUrl('yonge5959/Screenshot 2025-07-25 at 12.13.08 PM.png'), // High-quality rendering 9
+    getAssetUrl('yonge5959/Screenshot 2025-07-25 at 12.13.15 PM.png')  // High-quality rendering 10
 ];
 
 // Initialize the gallery when the page loads
@@ -50,7 +58,7 @@ function initBasicYonge5959Gallery() {
 
         const img = document.createElement('img');
         img.src = imageSrc;
-        img.alt = `5959 Yonge Street Condo ${index + 1}`;
+        img.alt = `5959 Yonge Street Condos ${index + 1}`;
         img.style.position = 'absolute';
         img.style.top = '0';
         img.style.left = '0';
