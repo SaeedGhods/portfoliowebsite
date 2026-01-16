@@ -16,7 +16,7 @@ function getHydroponicImages() {
         getAssetUrl("hydroponic/JPEG/JPEG/08.jpeg"),
         getAssetUrl("hydroponic/JPEG/JPEG/09.jpeg"),
         getAssetUrl("hydroponic/JPEG/JPEG/10.jpeg"),
-        getAssetUrl("hydroponic/JPEG/JPEG/11.jpeg"),
+        getAssetUrl("hydroponic/JPEG/JPEG/11.jpg"),
         getAssetUrl("hydroponic/JPEG/JPEG/12.jpeg"),
         getAssetUrl("hydroponic/JPEG/JPEG/13.jpg"),
         getAssetUrl("hydroponic/JPEG/JPEG/14.jpg"),
