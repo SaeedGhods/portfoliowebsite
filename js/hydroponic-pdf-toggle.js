@@ -742,6 +742,10 @@ function toggle800BroadwayMediaType(event, mediaType) {
             {
                 path: getAssetUrl("keyprojects/SAEED+GHODS+PROFESSIONAL+800+BROADWAY.PDF"),
                 name: "800 BROADWAY"
+            },
+            {
+                path: getAssetUrl("keyprojects/SAEED+GHODS+PROFESSIONAL+800+BROADWAY+UNIT+FLOOR+PLANS+26.PDF"),
+                name: "800 BROADWAY UNIT FLOOR PLANS"
             }
         ];
 
@@ -883,6 +887,10 @@ function get800BroadwayPdfFiles() {
         {
             path: getAssetUrl("keyprojects/SAEED+GHODS+PROFESSIONAL+800+BROADWAY.PDF"),
             name: "800 BROADWAY"
+        },
+        {
+            path: getAssetUrl("keyprojects/SAEED+GHODS+PROFESSIONAL+800+BROADWAY+UNIT+FLOOR+PLANS+26.PDF"),
+            name: "800 BROADWAY UNIT FLOOR PLANS"
         }
     ];
 }
