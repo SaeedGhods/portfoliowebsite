@@ -37,14 +37,18 @@ document.addEventListener('DOMContentLoaded', function() {
 function initBasicEnglishLaneGallery() {
     const gallery = document.getElementById("englishLaneGallery");
     if (!gallery) return;
-    
+
     gallery.innerHTML = '';
     gallery.style.display = 'grid';
     gallery.style.gridTemplateColumns = 'repeat(4, 1fr)';
     gallery.style.gap = '10px';
     gallery.style.marginTop = '20px';
-    
-    englishLaneImages.forEach((imageSrc, index) => {
+
+    // Custom layout: photos 1,2,6,7 on first row, 3,4,5 on second row
+    const customOrder = [0, 1, 5, 6, 2, 3, 4]; // indices in display order
+
+    customOrder.forEach((originalIndex, displayIndex) => {
+        const imageSrc = englishLaneImages[originalIndex];
         const galleryItem = document.createElement('div');
         galleryItem.className = 'gallery-item';
         galleryItem.style.position = 'relative';
@@ -55,7 +59,7 @@ function initBasicEnglishLaneGallery() {
         
         const img = document.createElement('img');
         img.src = imageSrc;
-        img.alt = `English Lane Phase 2 ${index + 1}`;
+        img.alt = `English Lane Phase 2 ${originalIndex + 1}`;
         img.style.position = 'absolute';
         img.style.top = '0';
         img.style.left = '0';
@@ -63,28 +67,28 @@ function initBasicEnglishLaneGallery() {
         img.style.height = '100%';
         img.style.objectFit = 'cover';
         img.style.transition = 'transform 0.3s ease';
-        
+
         galleryItem.appendChild(img);
-        
+
         // Add hover effect
         galleryItem.addEventListener('mouseenter', () => {
             img.style.transform = 'scale(1.05)';
         });
-        
+
         galleryItem.addEventListener('mouseleave', () => {
             img.style.transform = 'scale(1)';
         });
-        
+
         // Add click event to open modal (if modal system exists)
         galleryItem.addEventListener('click', () => {
             if (typeof openModal === 'function') {
-                openModal(imageSrc, index + 1);
+                openModal(imageSrc, originalIndex + 1);
             }
         });
-        
+
         gallery.appendChild(galleryItem);
     });
-    
+
     gallery.classList.add("initialized");
     console.log(`English Lane Gallery initialized with ${englishLaneImages.length} images`);
 } 
