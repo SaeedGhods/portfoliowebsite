@@ -112,6 +112,32 @@
             transform: scale(1.02);
         }
 
+        .project-links {
+            margin-top: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .project-pdf-link {
+            display: inline-block;
+            background: rgba(0, 116, 217, 0.1);
+            border: 1px solid rgba(0, 116, 217, 0.3);
+            border-radius: 4px;
+            padding: 8px 12px;
+            color: var(--text-color);
+            text-decoration: none;
+            font-size: 0.9em;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .project-pdf-link:hover {
+            background: rgba(0, 116, 217, 0.2);
+            border-color: var(--highlight-color);
+            color: var(--highlight-color);
+        }
+
         .back-button {
             position: fixed;
             top: 20px;
@@ -210,10 +236,14 @@
             </a>
 
             <!-- 800 Broadway San Diego -->
-            <a href="https://saeedghods-portfolio-assets.s3.us-east-2.amazonaws.com/assets/keyprojects/SAEED+GHODS+PROFESSIONAL+800+BROADWAY.PDF" target="_blank" class="project-card">
+            <div class="project-card">
                 <h3>4. 800 Broadway San Diego</h3>
                 <p>I co-designed this project as an Architectural Designer internally at Ghods Builders Inc, us as the property owner received permitting for this project and later sold the project and the concept.</p>
-            </a>
+                <div class="project-links">
+                    <a href="https://saeedghods-portfolio-assets.s3.us-east-2.amazonaws.com/assets/keyprojects/SAEED+GHODS+PROFESSIONAL+800+BROADWAY.PDF" target="_blank" class="project-pdf-link">Project Overview PDF</a>
+                    <a href="https://saeedghods-portfolio-assets.s3.us-east-2.amazonaws.com/assets/keyprojects/SAEED+GHODS+PROFESSIONAL+800+BROADWAY+UNIT+FLOOR+PLANS+26.PDF" target="_blank" class="project-pdf-link">Unit Floor Plans PDF</a>
+                </div>
+            </div>
 
             <!-- 5959 Yonge Street Condo -->
             <a href="https://saeedghods-portfolio-assets.s3.us-east-2.amazonaws.com/assets/keyprojects/SAEED+GHODS+PROFESSIONAL+5959+YONGE+ST+PLANS+HIGHRISE.PDF" target="_blank" class="project-card">
