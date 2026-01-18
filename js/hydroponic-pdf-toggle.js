@@ -1113,6 +1113,10 @@ function getYonge5959PdfFiles() {
         {
             path: getAssetUrl("keyprojects/SAEED+GHODS+PROFESSIONAL+5959+YONGE+ST+PLANS+HIGHRISE.PDF"),
             name: "5959 YONGE CONDO PLANS"
+        },
+        {
+            path: getAssetUrl("yonge5959/SAEED+GHODS+5959+YONGE+ST+SITE+PLAN+.pdf"),
+            name: "5959 YONGE SITE PLAN"
         }
     ];
 }
