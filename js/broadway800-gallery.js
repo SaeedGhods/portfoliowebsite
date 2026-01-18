@@ -5,8 +5,9 @@
 
 // Define the 800 Broadway gallery images
 const broadway800Images = [
-    'https://pbs.twimg.com/media/ExWukW2WEAQtCrs.jpg', // Street-level exterior at dusk with podium, retail, cafe
-    'https://pbs.twimg.com/media/ExWukW2WQAUzY3-.jpg'  // Full tower exterior from low angle at twilight
+    'https://saeedghods-portfolio-assets.s3.us-east-2.amazonaws.com/assets/800broadway/SAEED+GHODS+800+BROADWAY+RENDERING+ELEVATION+01.jpg', // Rendering Elevation 01
+    'https://saeedghods-portfolio-assets.s3.us-east-2.amazonaws.com/assets/800broadway/SAEED+GHODS+800+BROADWAY+RENDERING+ELEVATION+02.png', // Rendering Elevation 02
+    'https://saeedghods-portfolio-assets.s3.us-east-2.amazonaws.com/assets/800broadway/SAEED+GHODS+800+BROADWAY+RENDERING+RETAIL.jpg'  // Rendering Retail
 ];
 
 // Initialize the gallery when the page loads
