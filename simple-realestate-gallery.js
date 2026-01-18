@@ -65,15 +65,9 @@ document.addEventListener('DOMContentLoaded', function() {
         console.log('Added simple gallery to expandable div (no paragraph found)');
     }
     
-    // Define the image paths for both folders
+    // Define the image paths for folders (hiding first 10 photos from 29hp folder)
     const imageSets = [
-        // 29hp folder (10 images)
-        {
-            folder: getAssetUrl('realestate/JPEG/29hp/'),
-            count: 10,
-            zeroPadded: true
-        },
-        // 17t folder (10 images)
+        // 17t folder (10 images) - only showing these images now
         {
             folder: getAssetUrl('realestate/JPEG/17t/'),
             count: 10,
@@ -190,5 +184,5 @@ document.addEventListener('DOMContentLoaded', function() {
     `;
     document.head.appendChild(styleElement);
     
-    console.log('Simple gallery setup complete with 20 images');
+    console.log('Simple gallery setup complete with 10 images (first 10 photos hidden)');
 });
