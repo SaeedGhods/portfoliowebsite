@@ -9,7 +9,9 @@ const englishLaneImages = [
     getAssetUrl('englishlane/REAR.webp'), // Rear view of townhomes
     getAssetUrl('englishlane/KITCHEN.jpeg'), // Modern kitchen interior
     getAssetUrl('englishlane/BEDROOM.jpeg'), // Bedroom interior design
-    getAssetUrl('englishlane/BATHROOM.jpeg') // Bathroom interior finish
+    getAssetUrl('englishlane/BATHROOM.jpeg'), // Bathroom interior finish
+    getAssetUrl('englishlane/09SAEED+GHODS+ENGLISH+LANE+TOP+VIEW.JPG'), // Top view rendering
+    getAssetUrl('englishlane/10SAEED+GHODS+ENGLISH+LANE+SITE+PLAN.JPG') // Site plan
 ];
 
 // Initialize the gallery when the page loads
