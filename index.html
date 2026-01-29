@@ -4384,16 +4384,12 @@
             <div class="intro-text" id="introText">
                 <p>Lead Architectural Designer, Construction Superintendent, and Developer with 9+ years of experience in luxury residential and commercial projects. Canadian-American architect of Iranian descent, immersed in real estate development from a young age, igniting a passion for sustainable architecture. USC Architecture graduate with expertise in full-cycle project development from conceptual design through construction administration. Passionate about integrating cutting-edge technology into architecture, inspired by forward-thinking companies driving sustainable innovation.</p>
                 
-                <!-- Cover Letter & Resume PDF Button -->
-                <div class="resume-pdf-container">
-                    <button class="resume-pdf-button" onclick="openResumePdfModal('https://saeedghods-portfolio-assets.s3.us-east-2.amazonaws.com/assets/COVER LETTER & RESUME_GHODS.pdf')">
+                <!-- Resume & Portfolio Buttons -->
+                <div class="action-buttons-container">
+                    <button class="action-button resume-button" onclick="openResumePdfModal('https://saeedghods-portfolio-assets.s3.us-east-2.amazonaws.com/assets/COVER LETTER & RESUME_GHODS.pdf')">
                         📄 Resume
                     </button>
-                </div>
-
-                <!-- Projects Button -->
-                <div class="resume-pdf-container">
-                    <button class="resume-pdf-button" onclick="openProjectsPage()">
+                    <button class="action-button portfolio-button" onclick="openProjectsPage()">
                         📐 Portfolio
                     </button>
                 </div>
@@ -5902,31 +5898,51 @@
             font-size: 12px;
         }
 
-        /* Resume PDF Button Styles */
-        .resume-pdf-container {
+        /* Action Buttons Container */
+        .action-buttons-container {
             margin-top: 20px;
-            text-align: center;
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
         }
-        
-        .resume-pdf-button {
+
+        .action-button {
             background-color: rgba(0, 58, 108, 0.1);
             border: 1px solid rgba(var(--highlight-color-rgb), 0.2);
-            border-radius: 0px;
+            border-radius: 4px;
             padding: 12px 24px;
             cursor: pointer;
             font-weight: 500;
             font-size: 14px;
             transition: all 0.3s var(--smooth-ease);
             color: var(--text-color);
+            min-width: 120px;
+            text-align: center;
             display: inline-flex;
             align-items: center;
+            justify-content: center;
             gap: 8px;
         }
-        
-        .resume-pdf-button:hover {
+
+        .action-button:hover {
             background-color: rgba(0, 58, 108, 0.2);
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
             transform: translateY(-1px);
+            border-color: var(--highlight-color);
+        }
+
+        /* Mobile responsiveness - stack vertically on small screens */
+        @media (max-width: 480px) {
+            .action-buttons-container {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .action-button {
+                width: 100%;
+                max-width: 250px;
+            }
         }
 
         /* Real Estate PDF Button Styles */
